@@ -1,38 +1,110 @@
 .App {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+button {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- */
+/* 상 공통 */
+.head {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex: 1;
+  min-height: 80px;
+  max-height: 80px;
+  background-color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+/* 좌 - 계산기,매뉴 */
+.left {
+  display: flex;
+  flex-grow: 70;
+}
+/* 좌1 - 메뉴 */
+nav {
+  width: 0;
+}
+nav * {
+  opacity: 0;
+}
+/* 좌2 - 계산기 */
+.left_content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 좌상 - 메뉴, 타이틀 */
+.nav_open {
+  border: none;
+  width: 80px;
+  float: left;
+  background-color: transparent;
+  font-size: 30px;
+}
+.title {
+  float: left;
+}
+
+/* 좌하 - 계산기 */
+.calculator {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+/* 계산기 출력란 */
+.cal_output {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  min-height: 100px;
+  text-align: right;
+}
+/* 계산기 출력란 - 1작게 계산식 출력 */
+.cal_way {
+  flex: 3;
+  background-color: orange;
+  font-size: 30px;
+}
+/* 계산기 출력란 - 2크게 입력 숫자 출력 */
+.cal_num {
+  flex: 8;
+  font-size: 40px;
+  font-weight: 800;
+}
+.cal_buttons {
+  display: grid;
+  flex: 8;
+  background-color: pink;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+.cal_btn {
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* --- */
+/* --- */
+
+/* 우 - 기록 */
+.right {
+  display: flex;
+  flex-grow: 30;
+  flex-direction: column;
+}
+.right_body {
+  flex: 1;
+  background-color: mediumaquamarine;
 }
