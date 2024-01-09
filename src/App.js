@@ -10,7 +10,7 @@ import Right from './component/Right';
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className='App bg text'>
       <Left />
       <Right />
     </div>
