@@ -8,7 +8,7 @@ import RightBody from './Right/RightBody';
 
 export default function Right() {
   return (
-    <div className='right'>
+    <div className='body'>
       <RightHead />
       <RightBody />
     </div>
