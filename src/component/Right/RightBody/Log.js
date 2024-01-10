@@ -3,6 +3,6 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function RightBody() {
-  return <div className='right_body'></div>;
+export default function Log() {
+  return <div className='body log colunm'></div>;
 }

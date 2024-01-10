@@ -10,13 +10,28 @@ import Left from './component/Left';
 import Right from './component/Right';
 
 export default function App() {
+  const [right, setRight] = useState();
+
+  function responsive() {
+    const app = document.querySelector('.App');
+    if (app.scrollWidth < 930) {
+      setRight();
+      document.querySelector('.left').style.flexGrow = '1';
+    } else {
+      setRight(<Right />);
+      document.querySelector('.left').style.flexGrow = '0';
+    }
+  }
+  useEffect(() => {
+    responsive();
+    window.addEventListener('resize', responsive);
+  }, []);
+
   return (
     <div className='App bg text'>
-      <div className='center'>
-        <Nav />
-        <Left />
-        <Right />
-      </div>
+      <Nav />
+      <Left />
+      {right}
     </div>
   );
 }

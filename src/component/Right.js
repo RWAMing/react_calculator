@@ -4,13 +4,13 @@
 import React, { useState, useEffect } from 'react';
 
 import RightHead from './Right/RightHead';
-import RightBody from './Right/RightBody';
+import Log from './Right/RightBody/Log';
 
 export default function Right() {
   return (
-    <div className='body'>
+    <div className='colunm right'>
       <RightHead />
-      <RightBody />
+      <Log />
     </div>
   );
 }

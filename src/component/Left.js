@@ -4,13 +4,15 @@
 import React, { useState, useEffect } from 'react';
 
 import LeftHead from './Left/LeftHead';
-import Calculator from './Left/Calculator';
+import Calculator from './Left/LeftBody/Calculator';
 
 export default function Left() {
+  const [leftBody, setLeftBody] = useState(<Calculator />);
+
   return (
-    <div className='body left'>
+    <div className='colunm left'>
       <LeftHead />
-      <Calculator />
+      {leftBody}
     </div>
   );
 }

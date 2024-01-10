@@ -1,20 +1,51 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* ================== style ================== */
+/* ================== Style ================== */
+/* --- root --- */
 :root {
-  --bg: linear-gradient(#5acebb 5%, #55aaaa 40%, #4499aa 100%);
+  --bg: linear-gradient(#49bdaa 5%, #449999 40%, #338899 100%);
+  --bg-layer: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
   --color: white;
-  --font-size: 2vmax;
-  --button-shadow: rgba(0, 0, 0, 0.3);
+  --font-size: 3.5vh;
+  --space: 2vmin;
+  --button-selected: #ffbb44;
+  --button-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  --button-space: 1vmin;
   --button-bg: #eef2ff;
   --button-text: #497283;
   --button-side-bg: #cce0ec;
   --button-side-text: #447788;
   --button-point-bg: #ee8833;
   --button-point-text: white;
-  --button-space: 1vmin;
 }
+
+/* ================== Reset ================== */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: var(--font-size);
+  font-weight: 500;
+  box-sizing: border-box;
+}
+button,
+button * {
+  background-color: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+sup {
+  font-size: 1.5vh;
+}
+
+/* ================== Class ================== */
 .bg {
   background: var(--bg);
 }
@@ -33,45 +64,21 @@
   background: var(--button-point-bg);
   color: var(--button-point-text);
 }
-
-/* ================== Reset ================== */
-* {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: var(--font-size);
-  font-weight: 500;
-  box-sizing: border-box;
-}
-button,
-button * {
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* ================== Layout ================== */
-/* --- whole --- */
-.App {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-}
-.center {
+.colunm {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  max-width: 1300px;
-  height: max-content;
-  height: 100vh;
-  max-height: 800px;
-  transform: translate(-50%, -50%);
+  flex-direction: column;
 }
 
-/* --- nav --- */
+/* ================== Root Layout ================== */
+/* --- Root --- */
+.App {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  min-width: 300px;
+}
+
+/* --- Nav --- */
 nav {
   position: absolute;
   top: 0;
@@ -83,78 +90,88 @@ nav * {
   opacity: 0;
 }
 
-/* --- head --- */
+/* --- Left-Right --- */
+.left {
+  flex-basis: 800px;
+  flex-grow: 0;
+  background: var(--bg-layer);
+}
+.right {
+  flex-grow: 1;
+  background: var(--bg-layer);
+}
+/* head */
 .head {
   display: flex;
   align-items: center;
-  flex-basis: 60px;
+  flex: 1;
+  padding: 5px 0;
+  max-height: 60px;
 }
-.nav_open {
+.button_menu {
+  position: relative;
+  margin-left: 20px;
   border: none;
-  width: 70px;
   float: left;
-  background-color: transparent;
   font-size: 20px;
-  transform: scaleX(1.3);
+}
+.button_nav {
+  display: inline-block;
+  font-size: 26px;
+  transform: scaleX(1.1);
 }
 .title {
+  margin-left: 20px;
   float: left;
   font-size: 20px;
 }
-
-/* --- body --- */
+/* content */
 .body {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-}
-.left {
-  flex-basis: 700px;
-  flex-grow: 0;
+  flex: 1;
+  flex-basis: 540px;
+  padding: var(--space);
 }
 
-/* ================== Element ================== */
-/* --- 좌-우 --- */
-/* 좌 */
-.calculator {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: var(--button-space);
-}
-/* 계산기 출력란 */
+/* ================== Left Layout ================== */
+/* --- 계산기 --- */
+/* 결과창 */
 .cal_output {
-  display: flex;
-  flex: 2;
-  flex-direction: column;
-  min-height: 100px;
+  flex: 1;
   text-align: right;
+  justify-content: end;
 }
-/* 계산기 출력란 - 1작게 계산식 출력 */
 .cal_way {
-  flex: 3;
+  min-height: 20px;
   font-size: 20px;
 }
-/* 계산기 출력란 - 2크게 입력 숫자 출력 */
 .cal_num {
-  flex: 8;
-  font-size: 50px;
+  flex-grow: 1;
   font-weight: 800;
+  line-height: 100%;
+  margin-bottom: var(--space);
 }
+/* 버튼 */
 .cal_buttons {
   display: grid;
   gap: var(--button-space);
-  flex: 8;
+  flex: 19;
   grid-template-columns: repeat(4, 1fr);
 }
 .cal_button {
-  box-shadow: 2px 2px 2px var(--button-shadow);
+  box-shadow: var(--button-shadow);
   border-radius: 10px;
 }
 
-/* ==================================== */
-/* --- layout 우 --- */
-/*  */
-.right_body {
-  flex: 1;
+/* ================== Right Layout ================== */
+.right_open::after {
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  content: '';
+  width: 25px;
+  height: 5px;
+  display: block;
+  border-radius: 2.5px;
+  background: var(--button-selected);
+  transform: translateX(-50%);
 }
