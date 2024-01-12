@@ -11,14 +11,35 @@ export default function Calculator() {
 
   function responsive() {
     const left = document.querySelector('.left');
-    if (left.scrollWidth < 700) {
-      document.querySelector('.cal_num').style.fontSize = `${
-        (left.scrollWidth / 100) * 9
-      }px`;
-    } else {
-      document.querySelector('.cal_num').style.fontSize = '63px';
+    const showNum = document.querySelector('.cal_num');
+
+    const stopPoint = 700; // 폰트가 반응하는, left의 최대 width, height
+    const vwh = 9; // 폰트 vw(vh) 지정
+
+    const maxSize = (stopPoint / 100) * vwh; // 폰트 최대 크기(px)
+    const vwSize = (left.scrollWidth / 100) * vwh;
+
+    // 높이가 작음
+    if (left.scrollHeight <= stopPoint) {
+      const vhRight = (left.scrollHeight / 100) * vwh; // vh에 맞는, 원래 폰트 크기
+      const vhSize = maxSize - (maxSize - vhRight) / 2; // vh는 천천히 줄어들게 조정
+      // vh사이즈가 vw를 안 넘어가게 함
+      if (vwSize < vhSize) {
+        showNum.style.fontSize = `${vwSize}px`;
+      } else {
+        showNum.style.fontSize = `${vhSize}px`;
+      }
+    }
+    // 높이는 큰데 너비가 작음
+    else if (left.scrollWidth <= stopPoint) {
+      showNum.style.fontSize = `${vwSize}px`;
+    }
+    // 너비높이 다 크면, 최대사이즈로 고정
+    else {
+      showNum.style.fontSize = `${maxSize}px`;
     }
   }
+
   useEffect(() => {
     responsive();
     window.addEventListener('resize', responsive);
