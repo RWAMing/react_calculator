@@ -17,7 +17,7 @@ export default function btnBack(props) {
   // 0도 아니어야하고, string(기호입력후)도 아니어야함
   if (state !== 0 && typeof state !== 'string') {
     // 마지막 글자를 제거 후, Number형으로 변경
-    const newState = Number(String(state).slice(0, String(state).length - 1));
+    const newState = Number(String(state).slice(0, -1));
     setState(newState);
   }
 }

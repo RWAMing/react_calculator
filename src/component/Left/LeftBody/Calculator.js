@@ -93,7 +93,7 @@ export default function Calculator() {
         <CalButton value={2} state={calNum} setState={setCalNum} />
         <CalButton value={3} state={calNum} setState={setCalNum} />
         <CalButton value='+' sideClass='side' />
-        <CalButton value='&#177;' />
+        <CalButton value='&#177;' state={calNum} setState={setCalNum} />
         <CalButton value={0} state={calNum} setState={setCalNum} />
         <CalButton value='.' state={calNum} setState={setCalNum} />
         <CalButton value='&#61;' sideClass='point' />

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
+/* eslint-disable no-console */
 
 import React, { useState, useEffect } from 'react';
 
@@ -12,8 +13,22 @@ import React, { useState, useEffect } from 'react';
  */
 export default function btnNumExtra(props) {
   const { value, state, setState, sideClass } = props;
-  if (state === 0 || typeof state === 'string') {
-    // 0 혹은 string임
-    if (value === '&#177;') setState(state * -1); // +/-
+  const strState = String(state);
+  // 0아님
+  if (state !== 0) {
+    // 끝자리가 .이나 0 둘 다 아님 = number가능
+    if (strState.slice(-1) !== ('.' && '0')) {
+      setState(state * -1); // Number
+    }
+    // 음수인데, 끝자리 . 혹은 0
+    else if (strState[0] === '-') {
+      setState(strState.slice(1)); // +String
+      console.log(typeof strState.slice(1));
+    }
+    // 끝자리 .에 양수임
+    else {
+      setState(`-${strState}`); // -String
+      console.log(typeof `-${strState}`);
+    }
   }
 }

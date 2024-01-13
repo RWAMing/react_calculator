@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
+/* eslint-disable no-console */
 
 import React, { useState, useEffect } from 'react';
 
@@ -19,17 +20,21 @@ export default function btnNum(props) {
 
   // 숫자크기 괜찮으면 실행
   if (checkSafe(strOutput)) {
-    // 0일 때,
-    if (state === 0) {
+    // .입력 아니고, 기존값 0
+    if (value !== '.' && state === 0) {
       setState(value); // 새 입력
     }
-    // 값이 '.'일때
-    else if (value === '.') {
-      setState(strOutput); // String형
+    // .인데, 소수점 X || 0인데, 소수점 존재
+    else if (
+      (value === '.' && String(state).indexOf('.') === -1) ||
+      (value === 0 && String(state).indexOf('.') !== -1)
+    ) {
+      setState(strOutput); // String
     }
-    // 이미 입력값이 있고, 끝이 .도 아닐때
-    else {
+    // .아님
+    else if (value !== '.') {
       setState(Number(strOutput)); // Number형
     }
+    // .인데, 소수점 존재 => 반응 없음
   }
 }

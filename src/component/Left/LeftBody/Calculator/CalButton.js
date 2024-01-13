@@ -28,10 +28,10 @@ export default function CalButton(props) {
   // 버튼 종류에 따라, 실행할 함수 결정
   function onclickType(e, p) {
     if (typeof p.value === 'number' || p.value === '.') {
-      // 0~9
+      // 0~9 혹은 .
       btnNum(p);
     } else if (!p.sideClass) {
-      // +/- 혹은 .
+      // +/-
       btnNumExtra(p);
     } else if (p.sideClass === 'side') {
       // 계산기호
