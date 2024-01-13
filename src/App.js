@@ -12,7 +12,7 @@ import Right from './component/Right';
 export default function App() {
   const [right, setRight] = useState();
 
-  function responsive() {
+  function responsiveLayout() {
     const app = document.querySelector('.App');
     if (app.scrollWidth < 930) {
       setRight();
@@ -23,8 +23,8 @@ export default function App() {
     }
   }
   useEffect(() => {
-    responsive();
-    window.addEventListener('resize', responsive);
+    window.addEventListener('load', responsiveLayout);
+    window.addEventListener('resize', responsiveLayout);
   }, []);
 
   return (

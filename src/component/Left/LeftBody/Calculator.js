@@ -5,121 +5,98 @@ import React, { useState, useEffect } from 'react';
 
 import CalButton from './Calculator/CalButton';
 
+import sizeWHalfFitH from './Calculator/sizeWHalfFitH';
+import sizeHalfFitH from './Calculator/sizeHalfFitH';
+
 export default function Calculator() {
-  const [calWay, setcalWay] = useState('');
-  const [calNum, setcalNum] = useState(1234567890123456);
-
-  function responsive() {
-    const left = document.querySelector('.left');
-    const showNum = document.querySelector('.cal_num');
-
-    const stopPoint = 700; // 폰트가 반응하는, left의 최대 width, height
-    const vwh = 9; // 폰트 vw(vh) 지정
-
-    const maxSize = (stopPoint / 100) * vwh; // 폰트 최대 크기(px)
-    const vwSize = (left.scrollWidth / 100) * vwh;
-
-    // 높이가 작음
-    if (left.scrollHeight <= stopPoint) {
-      const vhRight = (left.scrollHeight / 100) * vwh; // vh에 맞는, 원래 폰트 크기
-      const vhSize = maxSize - (maxSize - vhRight) / 2; // vh는 천천히 줄어들게 조정
-      // vh사이즈가 vw를 안 넘어가게 함
-      if (vwSize < vhSize) {
-        showNum.style.fontSize = `${vwSize}px`;
-      } else {
-        showNum.style.fontSize = `${vhSize}px`;
-      }
-    }
-    // 높이는 큰데 너비가 작음
-    else if (left.scrollWidth <= stopPoint) {
-      showNum.style.fontSize = `${vwSize}px`;
-    }
-    // 너비높이 다 크면, 최대사이즈로 고정
-    else {
-      showNum.style.fontSize = `${maxSize}px`;
-    }
-  }
-
+  // 입력된 숫자 크기
   useEffect(() => {
-    responsive();
-    window.addEventListener('resize', responsive);
+    const props = {
+      target: document.querySelector('.cal_num'),
+      ref: document.querySelector('.left'),
+      refSize: 700,
+      vwh: 9,
+    };
+    window.addEventListener('load', (e) => sizeWHalfFitH(e, props));
+    window.addEventListener('resize', (e) => sizeWHalfFitH(e, props));
+  }, []);
+  // 버튼 크기
+  useEffect(() => {
+    const props = {
+      target: [...document.querySelectorAll('.cal_button')],
+      ref: [...document.querySelectorAll('.cal_button')][0],
+      refSize: 150,
+      vwh: 28,
+    };
+    window.addEventListener('load', (e) => sizeHalfFitH(e, props));
+    window.addEventListener('resize', (e) => sizeHalfFitH(e, props));
   }, []);
 
+  const [calWay, setCalWay] = useState('');
+  const [calNum, setCalNum] = useState(0);
+
+  // Calculator 컴포넌트 : 계산기
   return (
     <div className='body calculator colunm'>
       <div className='cal_output colunm'>
         <p className='cal_way'>{calWay}</p>
         <p className='cal_num'>{calNum}</p>
       </div>
+
       <div className='cal_buttons'>
-        <CalButton v='&#37;' style='side' />
-        <CalButton v='CE' style='side' />
-        <CalButton v='C' style='side' />
+        <CalButton value='&#37;' sideClass='side' />
+        <CalButton value='CE' sideClass='side' />
+        <CalButton value='C' sideClass='side' />
         <CalButton
-          v={
-            <i
-              className='material-icons'
-              style={{ fontSize: '3.5vh', verticalAlign: '-0.3vh' }}>
-              backspace
-            </i>
-          }
-          style='side'
+          // prettier-ignore
+          value={<i className='material-icons'>
+              backspace</i>}
+          state={calNum}
+          setState={setCalNum}
+          sideClass='side backspace'
         />
         <CalButton
-          v={
-            <>
-              <sup>1</sup>
-              <span style={{ fontSize: '2.5vh', verticalAlign: '0.8vh' }}>
-                &frasl;
-              </span>
-              x
-            </>
-          }
-          style='side'
+          // prettier-ignore
+          value={<span className='frasl'>
+            <sup>1</sup>
+            <span>&frasl;</span>
+            x
+          </span>}
+          sideClass='side'
         />
         <CalButton
-          v={
-            <>
-              x<sup>2</sup>
-            </>
-          }
-          style='side'
+          // prettier-ignore
+          value={<>x<sup>2</sup></>}
+          sideClass='side'
         />
         <CalButton
-          v={
-            <>
+          // prettier-ignore
+          value={
+            <span className='radic'>
               <sup>2</sup>
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: '1.2vh',
-                  textIndent: '-0.7vh',
-                  transform: 'scaleY(0.8)',
-                }}>
-                &radic;
-              </span>
+              <span>&radic;</span>
               x
-            </>
+            </span>
           }
-          style='side'
+          sideClass='side'
         />
-        <CalButton v='&#247;' style='side' />
-        <CalButton v='7' />
-        <CalButton v='8' />
-        <CalButton v='9' />
-        <CalButton v='&#215;' style='side' />
-        <CalButton v='4' />
-        <CalButton v='5' />
-        <CalButton v='6' />
-        <CalButton v='&#8722;' style='side' />
-        <CalButton v='1' />
-        <CalButton v='2' />
-        <CalButton v='3' />
-        <CalButton v='&#43;' style='side' />
-        <CalButton v='&#177;' />
-        <CalButton v='0' />
-        <CalButton v='&#46;' />
-        <CalButton v='&#61;' style='point' />
+        <CalButton value='&#247;' sideClass='side' />
+        <CalButton value={7} state={calNum} setState={setCalNum} />
+        <CalButton value={8} state={calNum} setState={setCalNum} />
+        <CalButton value={9} state={calNum} setState={setCalNum} />
+        <CalButton value='&#215;' sideClass='side' />
+        <CalButton value={4} state={calNum} setState={setCalNum} />
+        <CalButton value={5} state={calNum} setState={setCalNum} />
+        <CalButton value={6} state={calNum} setState={setCalNum} />
+        <CalButton value='&#8722;' sideClass='side' />
+        <CalButton value={1} state={calNum} setState={setCalNum} />
+        <CalButton value={2} state={calNum} setState={setCalNum} />
+        <CalButton value={3} state={calNum} setState={setCalNum} />
+        <CalButton value='+' sideClass='side' />
+        <CalButton value='&#177;' />
+        <CalButton value={0} state={calNum} setState={setCalNum} />
+        <CalButton value='.' state={calNum} setState={setCalNum} />
+        <CalButton value='&#61;' sideClass='point' />
       </div>
     </div>
   );
