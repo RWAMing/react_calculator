@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import CalButtonBox from './Calculator/CalButtonBox';
+import CalButtonBox from './CalButtonBox';
 
 // Function
-import fontsizeVwHalfvh from './fontsizeVwHalfvh';
+import fontsizeVwHalfvh from '../../../responsive/fontsizeVwHalfvh';
 
 /**
  * 계산기 컴포넌트

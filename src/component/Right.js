@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import RightHead from './Right/RightHead';
-import Log from './Right/RightBody/Log';
+import RightHead from './RightHead';
+import Log from './RightBody/Log';
 
 // Export
 export default function Right() {

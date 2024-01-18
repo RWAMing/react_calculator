@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import CalButton from './CalButton';
 
 // Function
-import fontsizeVwHalfvh from '../fontsizeVwHalfvh';
+import fontsizeHalfvh from '../../../responsive/fontsizeHalfvh';
 
 /**
  * 계산기의 버튼을 모아둔 박스 컴포넌트
@@ -26,10 +26,8 @@ export default function CalButtonBox(props) {
       refSize: 150,
       vwh: 28,
     };
-    window.addEventListener('load', (e) => fontsizeVwHalfvh(e, propsFontSize));
-    window.addEventListener('resize', (e) =>
-      fontsizeVwHalfvh(e, propsFontSize),
-    );
+    window.addEventListener('load', (e) => fontsizeHalfvh(e, propsFontSize));
+    window.addEventListener('resize', (e) => fontsizeHalfvh(e, propsFontSize));
   }, []);
 
   // Return
