@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
+/* eslint-disable radix */
 
 import React, { useState, useEffect } from 'react';
 
@@ -11,7 +12,7 @@ import btnBack from './onClick/btnBack';
 import btnEqual from './onClick/btnEqual';
 
 /**
- * @property {Number||String} value 0 ~ 9 혹은 기호
+ * @property {String} value 0 ~ 9 혹은 기호
  * @property {state} state 기존값
  * @property {setState} setState state 변경함수
  * @property {*} sideClass CSS용 클래스명
@@ -27,7 +28,7 @@ export default function CalButton(props) {
 
   // 버튼 종류에 따라, 실행할 함수 결정
   function onclickType(e, p) {
-    if (typeof p.value === 'number' || p.value === '.') {
+    if (!Number.isNaN(parseInt(p.value)) || p.value === '.') {
       // 0~9 혹은 .
       btnNum(p);
     } else if (!p.sideClass) {
