@@ -14,10 +14,14 @@ import React, { useState, useEffect } from 'react';
 export default function btnBack(props) {
   const { value, state, setState, sideClass } = props;
 
-  // 0도 아니어야하고, string(기호입력후)도 아니어야함
-  if (state !== 0 && typeof state !== 'string') {
+  // 0은 아니어야함
+  if (state !== 0) {
     // 마지막 글자를 제거 후, Number형으로 변경
     const newState = Number(String(state).slice(0, -1));
-    setState(newState);
+    if (Number.isNaN(newState)) {
+      setState(0);
+    } else {
+      setState(newState);
+    }
   }
 }
