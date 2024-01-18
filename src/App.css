@@ -173,7 +173,7 @@ nav * {
   line-height: 100%;
 }
 /* 버튼 */
-.cal_buttons {
+.cal_button_box {
   display: grid;
   gap: var(--button-space);
   flex: 19;

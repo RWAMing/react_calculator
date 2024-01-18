@@ -8,6 +8,7 @@ import Log from './Right/RightBody/Log';
 
 // Export
 export default function Right() {
+  // Return
   return (
     <div className='colunm right'>
       <RightHead />

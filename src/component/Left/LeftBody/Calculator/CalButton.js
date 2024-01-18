@@ -2,56 +2,53 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
 /* eslint-disable radix */
-
 import React, { useState, useEffect } from 'react';
 
+// Component
 import btnNum from './onClick/btnNum';
 import btnNumExtra from './onClick/btnNumExtra';
-import btnAddcal from './onClick/btnAddcal';
+import btnClear from './onClick/btnClear';
 import btnBack from './onClick/btnBack';
+import btnSymbol from './onClick/btnSymbol';
 import btnEqual from './onClick/btnEqual';
 
 /**
- * @property {String} value 0 ~ 9 혹은 기호
- * @property {state} state 기존값
- * @property {setState} setState state 변경함수
- * @property {*} sideClass CSS용 클래스명
+ * @prop {String} value 버튼 텍스트
+ * @prop {Object} states {calWay, setCalWay, calNum, setCalNum}
+ * @prop {*} sideClass 추가 클래스명
  */
 export default function CalButton(props) {
+  // Props
   const { value, sideClass } = props;
 
-  // sideClass 여부에 따라, 텍스트 내용 수정
-  function hasSideClass() {
-    if (!sideClass) return ''; // sideClass X =>  ''
-    return `-${sideClass}`; // sideClass O => '-이름'
+  // Function
+  // sideClass 여부에 따라 이름 변경
+  function setSideClass() {
+    if (!sideClass) return ''; // 입력x => 공백
+    return `-${sideClass}`; // 입력o => '-' 붙이기
   }
-
-  // 버튼 종류에 따라, 실행할 함수 결정
+  // 버튼 종류에 따라 다른 함수 실행 (클릭된요소, props전달)
   function onclickType(e, p) {
     if (!Number.isNaN(parseInt(p.value)) || p.value === '.') {
-      // 0~9 혹은 .
-      btnNum(p);
+      btnNum(p); // 0~9 혹은 .
     } else if (!p.sideClass) {
-      // +/-
-      btnNumExtra(p);
-    } else if (p.sideClass === 'side') {
-      // 계산기호
-      btnAddcal(p);
+      btnNumExtra(p); // +/-
+    } else if (p.value === ('C' || 'CE')) {
+      btnClear(p); // CE, C
     } else if (p.sideClass === 'side backspace') {
-      // backspace
-      btnBack(p);
+      btnBack(p); // backspace
+    } else if (p.sideClass === 'side') {
+      btnSymbol(p); // 계산기호
     } else {
-      // equal
-      btnEqual(p);
+      btnEqual(p); // =
     }
   }
 
-  // CalButtton 컴포넌트 : 계산기 버튼
+  // Return
   return (
     <button
       type='button'
-      // prettier-ignore
-      className={`cal_button button${hasSideClass()}`}
+      className={`cal_button button${setSideClass()}`}
       onClick={(e) => onclickType(e, props)}>
       {value}
     </button>

@@ -10,8 +10,10 @@ import Right from './component/Right';
 
 // Export
 export default function App() {
+  // State
   const [right, setRight] = useState();
 
+  // Function
   function responsiveLayout() {
     const app = document.querySelector('.App');
     if (app.scrollWidth < 930) {
@@ -22,11 +24,14 @@ export default function App() {
       document.querySelector('.left').style.flexGrow = '0';
     }
   }
+
+  // Effect
   useEffect(() => {
     window.addEventListener('load', responsiveLayout);
     window.addEventListener('resize', responsiveLayout);
   }, []);
 
+  // Return
   return (
     <div className='App bg text'>
       <Nav />

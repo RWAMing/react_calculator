@@ -8,8 +8,10 @@ import Calculator from './Left/LeftBody/Calculator';
 
 // Export
 export default function Left() {
+  // State
   const [leftBody, setLeftBody] = useState(<Calculator />);
 
+  // Return
   return (
     <div className='colunm left'>
       <LeftHead />

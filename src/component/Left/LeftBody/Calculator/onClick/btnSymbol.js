@@ -4,12 +4,12 @@
 import React, { useState, useEffect } from 'react';
 
 /**
- * 버튼 =를 눌렀을 때, 적어둔 식(.cal_way)이 계산되는 함수
- * @prop {String} value =
+ * 계산 기호 버튼을 클릭했을 때 실행하는 함수
+ * @prop {String} value 계산 기호(+, -...)
  * @prop {Object} states {calWay, setCalWay, calNum, setCalNum}
  * @prop {*} sideClass 추가 클래스명
  */
-export default function btnEqual(props) {
+export default function btnSymbol(props) {
   const { value, states, sideClass } = props;
   const { calWay, setCalWay, calNum, setCalNum } = states;
 }
