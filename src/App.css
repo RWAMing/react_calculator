@@ -77,13 +77,31 @@ sup {
   background: var(--button-bg);
   color: var(--button-text);
 }
-.button-side:where(*) {
+.button_side:where(*) {
   background: var(--button-side-bg);
   color: var(--button-side-text);
 }
-.button-point:where(*) {
+.button_point:where(*) {
   background: var(--button-point-bg);
   color: var(--button-point-text);
+}
+:where(
+    :where(.button, .button_side, .button_point):active,
+    .button_use
+  )::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--button-bg-active);
+  animation: appear 0.18s forwards;
+  content: '';
+  border-radius: 10px;
+}
+.button_point:active::after {
+  background: var(--button-point-bg-active);
 }
 .colunm {
   display: flex;
@@ -217,21 +235,6 @@ nav * {
     font-weight: 500;
     transform: translate(-50%, -50%);
   }
-}
-.cal_button:active::after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--button-bg-active);
-  animation: appear 0.18s forwards;
-  content: '';
-  border-radius: 10px;
-}
-.cal_button.button-point:active::after {
-  background: var(--button-point-bg-active);
 }
 
 /* ================== Right Layout ================== */

@@ -15,6 +15,7 @@ export default function Calculator() {
   // State
   const [calWay, setCalWay] = useState('');
   const [calNum, setCalNum] = useState('0');
+  const [ready, setReady] = useState(false);
 
   // Effect
   // .cal_num 요소의 font-size 반응형
@@ -30,13 +31,14 @@ export default function Calculator() {
   }, []);
 
   // Return
+  const states = { calWay, setCalWay, calNum, setCalNum, ready, setReady };
   return (
     <div className='body calculator colunm'>
       <div className='cal_output colunm'>
         <p className='cal_way'>{calWay}</p>
         <p className='cal_num'>{calNum}</p>
       </div>
-      <CalButtonBox states={(calWay, setCalWay, calNum, setCalNum)} />
+      <CalButtonBox states={states} />
     </div>
   );
 }

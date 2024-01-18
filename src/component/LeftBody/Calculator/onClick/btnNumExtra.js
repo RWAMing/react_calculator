@@ -6,13 +6,14 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * 양수/음수 전환 버튼
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
  * @prop {String} value +/-
- * @prop {Object} states {calWay, setCalWay, calNum, setCalNum}
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnNumExtra(props) {
-  const { value, states, sideClass } = props;
-  const { calWay, setCalWay, calNum, setCalNum } = states;
+  const { value, sideClass } = props;
+  const { calWay, setCalWay, calNum, setCalNum, ready, setReady } =
+    props.states;
 
   // 0아님
   if (calNum !== 0) {

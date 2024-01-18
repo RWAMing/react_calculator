@@ -2,18 +2,18 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-console */
 /* eslint-disable radix */
-
 import React, { useState, useEffect } from 'react';
 
 /**
  * 버튼 backspace를 눌렀을 때, 숫자 끝이 삭제되는 함수
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
  * @prop {String} value backspace
- * @prop {Object} states {calWay, setCalWay, calNum, setCalNum}
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnBack(props) {
-  const { value, states, sideClass } = props;
-  const { calWay, setCalWay, calNum, setCalNum } = states;
+  const { value, sideClass } = props;
+  const { calWay, setCalWay, calNum, setCalNum, ready, setReady } =
+    props.states;
 
   // 0은 아니어야함
   if (calNum !== '0') {
