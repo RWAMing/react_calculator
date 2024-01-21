@@ -35,7 +35,6 @@ export default function CalButton(props) {
   function onclickType(e, p) {
     if (!Number.isNaN(parseInt(p.value)) || p.value === '.') {
       btnNum(p); // 0~9 혹은 .
-      states.calNew.set(false); // 새 번호 입력 후, 대기 해제
     } else if (!p.sideClass) {
       btnNumExtra(p); // +/-
     } else if (p.value === 'C' || p.value === 'CE') {
@@ -43,13 +42,7 @@ export default function CalButton(props) {
     } else if (p.sideClass === 'side backspace') {
       btnBack(p); // backspace
     } else if (p.sideClass === 'side') {
-      // 계산기호
-      document.querySelectorAll('.button_use').forEach((use) => {
-        use.classList.remove('button_use');
-      });
-      e.target.classList.add('button_use');
-      btnSymbol(p);
-      states.calNew.set(true); // 계산기호 누른 후, 새 번호 입력 대기
+      btnSymbol(p, e.target); // 계산기호
     } else {
       btnEqual(p); // =
     }

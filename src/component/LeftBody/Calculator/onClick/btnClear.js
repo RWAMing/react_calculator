@@ -19,6 +19,8 @@ export default function btnClear(props) {
     calNum.set('0');
     if (value === 'C' && calWay.value !== '') {
       calWay.set('');
+      calPrev.set('');
+      calNew.set(false);
     }
   }
 }

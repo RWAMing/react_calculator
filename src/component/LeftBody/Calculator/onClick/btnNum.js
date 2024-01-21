@@ -32,5 +32,7 @@ export default function btnNum(props) {
       calNum.set(strOutput);
     }
     // .인데, 소수점 존재 => 반응 없음
+
+    calNew.set(false); // 새 번호 입력 후, 대기 해제
   }
 }
