@@ -7,19 +7,17 @@ import CalButtonBox from './CalButtonBox';
 
 // Function
 import fontsizeVwHalfvh from '../../../responsive/fontsizeVwHalfvh';
+import makeObjState from '../../makeObjState';
 
 /**
  * 계산기 컴포넌트
  */
 export default function Calculator() {
   // State
-  function makeObjState(value) {
-    const [state, set] = useState(value ?? {});
-    return { state, set };
-  }
   const calWay = makeObjState();
-  const calNum = makeObjState('0');
   const calPrev = makeObjState();
+  const calNum = makeObjState('0');
+  const calNew = makeObjState(false);
 
   // Effect
   // .cal_num 요소의 font-size 반응형
@@ -35,7 +33,7 @@ export default function Calculator() {
   }, []);
 
   // Return
-  const states = { calWay, calNum, calPrev };
+  const states = { calWay, calNum, calPrev, calNew };
   return (
     <div className='body calculator colunm'>
       <div className='cal_output colunm'>

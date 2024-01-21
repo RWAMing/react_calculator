@@ -9,7 +9,7 @@ import CalButton from './CalButton';
 
 /**
  * 계산기 버튼 박스 컴포넌트
- * @prop {Object} states { calWay, calNum, calPrev }
+ * @prop {Object} states { calWay, calNum, calPrev, calNew }
  */
 export default function CalButtonBox(props) {
   // Props
