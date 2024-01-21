@@ -67,9 +67,17 @@ export default function btnSymbol(props, button) {
     if (checkSafe(calTry)) {
       // 로그에 먼저 저장
       const newLog = document.createElement('div');
-      const newLogText = document.createElement('p');
-      newLogText.innerText = `${prev}${value}${num}=${output}`;
-      newLog.appendChild(newLogText);
+      newLog.classList.add('log_list');
+
+      const newLogWay = document.createElement('p');
+      newLogWay.classList.add('log_way');
+      newLogWay.innerText = `${prev}${value}${num}=`;
+      newLog.appendChild(newLogWay);
+
+      const newLogOutput = document.createElement('p');
+      newLogOutput.innerText = `${output}`;
+      newLog.appendChild(newLogOutput);
+
       document
         .querySelector('.body.log')
         .insertBefore(
