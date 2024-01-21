@@ -107,6 +107,12 @@ sup {
   display: flex;
   flex-direction: column;
 }
+.appear {
+  animation: appear 0.2s forwards;
+}
+.disappear {
+  animation: disappear 0.2s forwards;
+}
 
 /* ================== Root Layout ================== */
 /* --- Root --- */
@@ -253,4 +259,7 @@ nav * {
 }
 .right_close::after {
   animation: disappear 0.2s forwards;
+}
+.right .body {
+  opacity: 0;
 }

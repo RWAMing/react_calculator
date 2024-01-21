@@ -4,15 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 // Component
 import RightHead from './RightHead';
-import Log from './RightBody/Log';
+
+// Function
+import makeObjState from './makeObjState';
 
 // Export
 export default function Right() {
+  const rightBody = makeObjState();
+
   // Return
   return (
     <div className='colunm right'>
-      <RightHead />
-      <Log />
+      <RightHead body={rightBody} />
+      {rightBody.state}
     </div>
   );
 }

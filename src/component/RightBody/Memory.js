@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Export
-export default function Log() {
+export default function Memory() {
   // Return
-  return <div className='body log colunm'>로그에용</div>;
+  return <div className='body memory colunm'>메모리에용</div>;
 }
