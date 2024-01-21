@@ -6,24 +6,23 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * 양수/음수 전환 버튼
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
+ * @prop {Object} states { calWay, calNum, calPrev }
  * @prop {String} value +/-
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnNumExtra(props) {
   const { value, sideClass } = props;
-  const { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev } =
-    props.states;
+  const { calWay, calNum, calPrev } = props.states;
 
   // 0아님
-  if (calNum !== 0) {
+  if (calNum.value !== 0) {
     // 음수인데, 끝자리 . 혹은 0
-    if (calNum[0] === '-') {
-      setCalNum(calNum.slice(1));
+    if (calNum.value[0] === '-') {
+      calNum.set(calNum.value.slice(1));
     }
     // 끝자리 .에 양수임
     else {
-      setCalNum(`-${calNum}`);
+      calNum.set(`-${calNum.value}`);
     }
   }
 }

@@ -17,7 +17,7 @@ import btnEqual from './onClick/btnEqual';
 import fontsizeHalfvh from '../../../responsive/fontsizeHalfvh';
 
 /**
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
+ * @prop {Object} states { calWay, calNum, calPrev }
  * @prop {String} value 버튼 텍스트
  * @prop {*} sideClass 추가 클래스명
  */

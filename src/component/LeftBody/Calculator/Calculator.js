@@ -13,9 +13,13 @@ import fontsizeVwHalfvh from '../../../responsive/fontsizeVwHalfvh';
  */
 export default function Calculator() {
   // State
-  const [calWay, setCalWay] = useState('');
-  const [calNum, setCalNum] = useState('0');
-  const [calPrev, setCalPrev] = useState();
+  function makeObjState(value) {
+    const [state, set] = useState(value ?? {});
+    return { state, set };
+  }
+  const calWay = makeObjState();
+  const calNum = makeObjState('0');
+  const calPrev = makeObjState();
 
   // Effect
   // .cal_num 요소의 font-size 반응형
@@ -31,12 +35,12 @@ export default function Calculator() {
   }, []);
 
   // Return
-  const states = { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev };
+  const states = { calWay, calNum, calPrev };
   return (
     <div className='body calculator colunm'>
       <div className='cal_output colunm'>
-        <p className='cal_way'>{calWay}</p>
-        <p className='cal_num'>{calNum}</p>
+        <p className='cal_way'>{calWay.state}</p>
+        <p className='cal_num'>{calNum.state}</p>
       </div>
       <CalButtonBox states={states} />
     </div>
