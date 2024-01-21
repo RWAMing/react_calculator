@@ -17,11 +17,6 @@ export default function btnSymbol(props, button) {
   const { value, sideClass } = props;
   const { calWay, calNum, calPrev, calNew } = props.states;
 
-  // 공통
-  document.querySelector('.button_use')?.classList.remove('button_use');
-  button.classList.add('button_use');
-  calNew.set(true); // 계산기호 누른 후, 새 번호 입력 대기
-
   // 심볼 클릭시
   // 1. calNum : calPrev랑 calNum이랑 계산한 것
   // 2. calPrev : calNum
@@ -32,40 +27,44 @@ export default function btnSymbol(props, button) {
   // 그다음 숫자 입력시
   // 1. calNum : 새 입력
 
-  const bigPrev = BigInt(Number(calPrev.state));
-  const bigNum = BigInt(Number(calNum.state));
+  const prev = Number(calPrev.state);
+  const num = Number(calNum.state);
 
-  console.log(value);
+  // 저장된 숫자 없거나, 새번호 입력 전
+  if (prev === 0 || calNew.state === true) {
+    calPrev.set(calNum.state); // 입력했던 숫자 저장
+    calWay.set(`${calNum.state}${value}`); // 입력했던 숫자, 기호 띄우기
+  }
 
-  let output = '';
-
-  if (calPrev.state !== '') {
+  // 저장된 숫자 있음 + 새번호 입력 준비아님 => 계산
+  else {
+    let calTry = '';
+    let output = '';
+    const bigPrev = BigInt(Math.floor(prev));
+    const bigNum = BigInt(Math.floor(num));
     // 더하기
     if (value === '+') {
-      output = String(bigPrev + bigNum);
+      calTry = String(bigPrev + bigNum);
+      output = String(prev + num);
     }
     // 빼기
     else if (value === '−') {
-      output = String(bigPrev - bigNum);
+      calTry = String(bigPrev - bigNum);
+      output = String(prev - num);
     }
     // 곱하기
     else if (value === '×') {
-      output = String(bigPrev * bigNum);
+      calTry = String(bigPrev - bigNum);
+      output = String(prev - num);
     }
     // 나누기
-    // else if (value === '÷') {
-    //   if (checkSafe(String(bigPrev / bigNum))) {
-    //     output = String(Number(calPrev.state) / Number(calNum.state));
-    //   } else {
-    //     calNum.set('Err');
-    //     calPrev.set('');
-    //     calWay.set('');
-    //     return;
-    //   }
-    // }
+    else if (value === '÷') {
+      calTry = String(bigPrev / bigNum);
+      output = String(prev / num);
+    }
 
-    // 숫자 안전
-    if (checkSafe(output)) {
+    // 안전체크 후 세팅
+    if (checkSafe(calTry)) {
       calNum.set(output); // 결과값 띄우기
       calPrev.set(output); // 결과값 저장
       calWay.set(`${output}${value}`); // 결과값, 기호 띄우기
@@ -74,11 +73,10 @@ export default function btnSymbol(props, button) {
       calPrev.set('');
       calWay.set('');
     }
-  }
+  } // 계산 끝
 
-  // 저장된 숫자 없음
-  else {
-    calPrev.set(calNum.state); // 입력했던 숫자 저장
-    calWay.set(`${calNum.state}${value}`); // 입력했던 숫자, 기호 띄우기
-  }
+  // 공통
+  document.querySelector('.button_use')?.classList.remove('button_use');
+  button.classList.add('button_use');
+  calNew.set(true);
 }
