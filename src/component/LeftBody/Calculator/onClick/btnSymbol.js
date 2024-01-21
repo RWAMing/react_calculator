@@ -54,8 +54,8 @@ export default function btnSymbol(props, button) {
     }
     // 곱하기
     else if (value === '×') {
-      calTry = String(bigPrev - bigNum);
-      output = String(prev - num);
+      calTry = String(bigPrev * bigNum);
+      output = String(prev * num);
     }
     // 나누기
     else if (value === '÷') {
@@ -65,6 +65,19 @@ export default function btnSymbol(props, button) {
 
     // 안전체크 후 세팅
     if (checkSafe(calTry)) {
+      // 로그에 먼저 저장
+      const newLog = document.createElement('div');
+      const newLogText = document.createElement('p');
+      newLogText.innerText = `${prev}${value}${num}=${output}`;
+      newLog.appendChild(newLogText);
+      document
+        .querySelector('.body.log')
+        .insertBefore(
+          newLog,
+          document.querySelector('.body.log *:first-child'),
+        );
+
+      // 계산기에 결과값 띄우기
       calNum.set(output); // 결과값 띄우기
       calPrev.set(output); // 결과값 저장
       calWay.set(`${output}${value}`); // 결과값, 기호 띄우기

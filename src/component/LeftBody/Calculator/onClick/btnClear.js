@@ -17,10 +17,12 @@ export default function btnClear(props) {
   // 0은 아니어야함
   if (calNum.state !== '0') {
     calNum.set('0');
-    if (value === 'C' && calWay.value !== '') {
-      calWay.set('');
-      calPrev.set('');
-      calNew.set(false);
-    }
+  }
+  // C눌렀는데 calWay에 내용 있으면 지움
+  if (value === 'C' && calWay.value !== '') {
+    document.querySelector('.button_use')?.classList.remove('button_use');
+    calWay.set('');
+    calPrev.set('');
+    calNew.set(false);
   }
 }

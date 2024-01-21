@@ -14,8 +14,8 @@ export default function btnBack(props) {
   const { value, sideClass } = props;
   const { calWay, calNum, calPrev, calNew } = props.states;
 
-  // 0은 아니어야함
-  if (calNum.state !== '0') {
+  // 0이 아니고, 새번호 준비도 아닐 것
+  if (calNum.state !== '0' && calNew.state === false) {
     // 마지막 글자를 제거해서 입력
     const newState = String(calNum.state).slice(0, -1);
 

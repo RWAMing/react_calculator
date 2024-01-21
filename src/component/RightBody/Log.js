@@ -5,5 +5,5 @@ import React, { useState, useEffect } from 'react';
 // Export
 export default function Log() {
   // Return
-  return <div className='body log colunm'>로그에용</div>;
+  return <div className='body log colunm'></div>;
 }
