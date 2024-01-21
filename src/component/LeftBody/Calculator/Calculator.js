@@ -15,7 +15,7 @@ export default function Calculator() {
   // State
   const [calWay, setCalWay] = useState('');
   const [calNum, setCalNum] = useState('0');
-  const [ready, setReady] = useState(false);
+  const [calPrev, setCalPrev] = useState();
 
   // Effect
   // .cal_num 요소의 font-size 반응형
@@ -31,7 +31,7 @@ export default function Calculator() {
   }, []);
 
   // Return
-  const states = { calWay, setCalWay, calNum, setCalNum, ready, setReady };
+  const states = { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev };
   return (
     <div className='body calculator colunm'>
       <div className='cal_output colunm'>

@@ -8,13 +8,13 @@ import checkSafe from './checkSafe';
 
 /**
  * 숫자(0~9), 소수점(.) 버튼을 눌렀을 때, 값을 입력하는 함수
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
  * @prop {String} value 숫자(0~9), 소수점(.)
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnNum(props) {
   const { value, sideClass } = props;
-  const { calWay, setCalWay, calNum, setCalNum, ready, setReady } =
+  const { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev } =
     props.states;
 
   const strOutput = `${calNum}${value}`;

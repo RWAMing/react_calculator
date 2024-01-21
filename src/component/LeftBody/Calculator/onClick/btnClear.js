@@ -6,13 +6,13 @@ import React, { useState, useEffect } from 'react';
 
 /**
  * C 혹은 CE 누르면 입력된 숫자 지우기
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
  * @prop {String} value C 혹은 CE
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnClear(props) {
   const { value, sideClass } = props;
-  const { calWay, setCalWay, calNum, setCalNum, ready, setReady } =
+  const { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev } =
     props.states;
 
   // 0은 아니어야함

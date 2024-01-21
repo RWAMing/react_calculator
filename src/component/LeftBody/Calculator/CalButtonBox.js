@@ -9,7 +9,7 @@ import CalButton from './CalButton';
 
 /**
  * 계산기 버튼 박스 컴포넌트
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
  */
 export default function CalButtonBox(props) {
   // Props
@@ -54,20 +54,20 @@ export default function CalButtonBox(props) {
         sideClass='side'
       />
       <CalButton states={states} value='&#247;' sideClass='side' />
-      <CalButton states={states} value={'7'} />
-      <CalButton states={states} value={'8'} />
-      <CalButton states={states} value={'9'} />
+      <CalButton states={states} value='7' />
+      <CalButton states={states} value='8' />
+      <CalButton states={states} value='9' />
       <CalButton states={states} value='&#215;' sideClass='side' />
-      <CalButton states={states} value={'4'} />
-      <CalButton states={states} value={'5'} />
-      <CalButton states={states} value={'6'} />
+      <CalButton states={states} value='4' />
+      <CalButton states={states} value='5' />
+      <CalButton states={states} value='6' />
       <CalButton states={states} value='&#8722;' sideClass='side' />
-      <CalButton states={states} value={'1'} />
-      <CalButton states={states} value={'2'} />
-      <CalButton states={states} value={'3'} />
+      <CalButton states={states} value='1' />
+      <CalButton states={states} value='2' />
+      <CalButton states={states} value='3' />
       <CalButton states={states} value='+' sideClass='side' />
       <CalButton states={states} value='&#177;' />
-      <CalButton states={states} value={'0'} />
+      <CalButton states={states} value='0' />
       <CalButton states={states} value='.' />
       <CalButton states={states} value='&#61;' sideClass='point' />
     </div>

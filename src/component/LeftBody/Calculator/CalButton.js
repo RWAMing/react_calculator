@@ -17,7 +17,7 @@ import btnEqual from './onClick/btnEqual';
 import fontsizeHalfvh from '../../../responsive/fontsizeHalfvh';
 
 /**
- * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, ready, setReady }
+ * @prop {Object} states { calWay, setCalWay, calNum, setCalNum, calPrev, setCalPrev }
  * @prop {String} value 버튼 텍스트
  * @prop {*} sideClass 추가 클래스명
  */
@@ -33,7 +33,6 @@ export default function CalButton(props) {
   }
   // 버튼 종류에 따라 다른 함수 실행 (클릭된요소, props전달)
   function onclickType(e, p) {
-    e.classList.add();
     if (!Number.isNaN(parseInt(p.value)) || p.value === '.') {
       btnNum(p); // 0~9 혹은 .
     } else if (!p.sideClass) {
@@ -43,6 +42,10 @@ export default function CalButton(props) {
     } else if (p.sideClass === 'side backspace') {
       btnBack(p); // backspace
     } else if (p.sideClass === 'side') {
+      document.querySelectorAll('.button_use').forEach((use) => {
+        use.classList.remove('button_use');
+      });
+      e.target.classList.add('button_use');
       btnSymbol(p); // 계산기호
     } else {
       btnEqual(p); // =
