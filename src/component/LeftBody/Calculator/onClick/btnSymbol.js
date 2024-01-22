@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 // function
 import checkSafe from './checkSafe';
+import logging from './logging';
 
 /**
  * 계산 기호 버튼을 클릭했을 때 실행하는 함수
@@ -16,16 +17,6 @@ import checkSafe from './checkSafe';
 export default function btnSymbol(props, button) {
   const { value, sideClass } = props;
   const { calWay, calNum, calPrev, calNew } = props.states;
-
-  // 심볼 클릭시
-  // 1. calNum : calPrev랑 calNum이랑 계산한 것
-  // 2. calPrev : calNum
-  // 3. calWay : calNum + value
-  // 4. 기록
-  //   4-1. calWay에 아무것도 없었음 : X
-  //   4-2. calWay에 무언가 있음 : calPrev + 기호 + 입력숫자 + '=' + 결과
-  // 그다음 숫자 입력시
-  // 1. calNum : 새 입력
 
   const prev = Number(calPrev.state);
   const num = Number(calNum.state);
@@ -66,24 +57,7 @@ export default function btnSymbol(props, button) {
     // 안전체크 후 세팅
     if (checkSafe(calTry)) {
       // 로그에 먼저 저장
-      const newLog = document.createElement('div');
-      newLog.classList.add('log_list');
-
-      const newLogWay = document.createElement('p');
-      newLogWay.classList.add('log_way');
-      newLogWay.innerText = `${prev}${value}${num}=`;
-      newLog.appendChild(newLogWay);
-
-      const newLogOutput = document.createElement('p');
-      newLogOutput.innerText = `${output}`;
-      newLog.appendChild(newLogOutput);
-
-      document
-        .querySelector('.body.log')
-        .insertBefore(
-          newLog,
-          document.querySelector('.body.log *:first-child'),
-        );
+      logging(prev, value, num, output);
 
       // 계산기에 결과값 띄우기
       calNum.set(output); // 결과값 띄우기
