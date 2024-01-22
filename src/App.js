@@ -30,7 +30,7 @@ export default function App() {
 
   // Return
   return (
-    <div className='App bg text'>
+    <div className='App bg'>
       <Nav />
       <Left />
       <Right />

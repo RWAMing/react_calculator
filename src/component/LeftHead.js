@@ -13,7 +13,7 @@ export default function LeftHead() {
   return (
     <div className='head'>
       <button type='button' className='button_menu'>
-        <span className='button_nav text'>&equiv;</span>
+        <span className='button_nav'>&equiv;</span>
       </button>
       {title}
     </div>
