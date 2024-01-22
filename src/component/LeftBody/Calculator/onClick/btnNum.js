@@ -20,8 +20,8 @@ export default function btnNum(props) {
 
   // 숫자크기 괜찮으면 실행
   if (checkSafe(strOutput)) {
-    // 기존값 0 (최초입력)
-    if (calNum.state === '0' || calNew.state === true) {
+    // 새번호 입력 대기상태
+    if (calNew.state !== false) {
       calNum.set(value); // 새 숫자 입력
     }
     // 숫자버튼 || .버튼 , 소수점 없는 상황

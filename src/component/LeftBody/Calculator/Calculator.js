@@ -17,7 +17,7 @@ export default function Calculator() {
   const calWay = makeObjState();
   const calPrev = makeObjState();
   const calNum = makeObjState('0');
-  const calNew = makeObjState(false);
+  const calNew = makeObjState('first');
 
   // Effect
   // .cal_num 요소의 font-size 반응형

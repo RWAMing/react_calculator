@@ -23,6 +23,6 @@ export default function btnClear(props) {
     document.querySelector('.button_use')?.classList.remove('button_use');
     calWay.set('');
     calPrev.set('');
-    calNew.set(false);
+    calNew.set('first');
   }
 }

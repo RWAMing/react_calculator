@@ -22,7 +22,7 @@ export default function btnSymbol(props, button) {
   const num = Number(calNum.state);
 
   // 저장된 숫자 없거나, 새번호 입력 전
-  if (prev === 0 || calNew.state === true) {
+  if (prev === 0 || calNew.state !== false) {
     calPrev.set(calNum.state); // 입력했던 숫자 저장
     calWay.set(`${calNum.state}${value}`); // 입력했던 숫자, 기호 띄우기
   }
@@ -73,5 +73,5 @@ export default function btnSymbol(props, button) {
   // 공통
   document.querySelector('.button_use')?.classList.remove('button_use');
   button.classList.add('button_use');
-  calNew.set(true);
+  calNew.set(value);
 }
