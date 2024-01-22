@@ -11,18 +11,19 @@ import React, { useState, useEffect } from 'react';
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnClear(props) {
-  const { value, sideClass } = props;
-  const { calWay, calNum, calPrev, calNew } = props.states;
+  // Props
+  const { value, sideClass, states } = props;
+  const { calWay, calNum, calPrev, calNew } = states;
 
-  // 0은 아니어야함
+  // 0이면 입력칸 그대로
   if (calNum.state !== '0') {
     calNum.set('0');
   }
-  // C눌렀는데 calWay에 내용 있으면 지움
+  // C눌렀는데, calWay에 내용 있으면 지움
   if (value === 'C' && calWay.value !== '') {
     document.querySelector('.button_use')?.classList.remove('button_use');
     calWay.set('');
     calPrev.set('');
-    calNew.set('first');
+    calNew.set('clear');
   }
 }

@@ -11,8 +11,9 @@ import React, { useState, useEffect } from 'react';
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnBack(props) {
-  const { value, sideClass } = props;
-  const { calWay, calNum, calPrev, calNew } = props.states;
+  // Props
+  const { value, sideClass, states } = props;
+  const { calWay, calNum, calPrev, calNew } = states;
 
   // 0이 아니고, 새번호 준비도 아닐 것
   if (calNum.state !== '0' && calNew.state === false) {

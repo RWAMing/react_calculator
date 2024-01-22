@@ -13,8 +13,9 @@ import checkSafe from './checkSafe';
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnNum(props) {
-  const { value, sideClass } = props;
-  const { calWay, calNum, calPrev, calNew } = props.states;
+  // Props
+  const { value, sideClass, states } = props;
+  const { calWay, calNum, calPrev, calNew } = states;
 
   const strOutput = `${calNum.state}${value}`;
 

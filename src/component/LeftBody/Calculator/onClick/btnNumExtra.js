@@ -11,8 +11,9 @@ import React, { useState, useEffect } from 'react';
  * @prop {*} sideClass 추가 클래스명
  */
 export default function btnNumExtra(props) {
-  const { value, sideClass } = props;
-  const { calWay, calNum, calPrev, calNew } = props.states;
+  // Props
+  const { value, sideClass, states } = props;
+  const { calWay, calNum, calPrev, calNew } = states;
 
   // 0아님
   if (calNum.state !== 0) {

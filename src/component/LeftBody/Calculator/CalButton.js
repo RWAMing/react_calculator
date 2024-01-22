@@ -11,7 +11,6 @@ import btnNumExtra from './onClick/btnNumExtra';
 import btnClear from './onClick/btnClear';
 import btnBack from './onClick/btnBack';
 import btnSymbol from './onClick/btnSymbol';
-import btnEqual from './onClick/btnEqual';
 
 // Function
 import fontsizeHalfvh from '../../../responsive/fontsizeHalfvh';
@@ -41,10 +40,8 @@ export default function CalButton(props) {
       btnClear(p); // CE, C
     } else if (p.sideClass === 'side backspace') {
       btnBack(p); // backspace
-    } else if (p.sideClass === 'side') {
-      btnSymbol(p, e.target); // 계산기호
     } else {
-      btnEqual(p); // =
+      btnSymbol(e.target, p); // 계산기호, =
     }
   }
 
