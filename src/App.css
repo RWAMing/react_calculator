@@ -184,6 +184,7 @@ nav * {
   max-width: 800px; /* 800px이하 */
 }
 .right .body {
+  display: none;
   overflow-y: scroll; /* 스크롤 가능 */
   opacity: 0; /* 애니메이션 기본은 0부터 */
 }
@@ -197,10 +198,10 @@ nav * {
   text-align: right;
 }
 .cal_way {
-  opacity: var(--opacity-dim);
-  color: white;
   min-height: 20px;
   font-size: 20px;
+  color: white;
+  opacity: var(--opacity-dim);
 }
 .cal_num {
   flex-grow: 1;
