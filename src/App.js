@@ -10,18 +10,15 @@ import Right from './component/Right';
 
 // Export
 export default function App() {
-  // State
-  const [right, setRight] = useState();
-
   // Function
   function responsiveLayout() {
     const app = document.querySelector('.App');
     if (app.scrollWidth < 930) {
-      setRight();
-      document.querySelector('.left').style.flexGrow = '1';
+      document.querySelector('.left').style.flexBasis = '930px';
+      document.querySelector('.right').style.display = 'none';
     } else {
-      setRight(<Right />);
-      document.querySelector('.left').style.flexGrow = '0';
+      document.querySelector('.left').style.flexBasis = '800px';
+      document.querySelector('.right').style.display = 'flex';
     }
   }
 
@@ -36,7 +33,7 @@ export default function App() {
     <div className='App bg text'>
       <Nav />
       <Left />
-      {right}
+      <Right />
     </div>
   );
 }

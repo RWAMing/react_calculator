@@ -16,7 +16,7 @@
   --space: 2vmin;
   --button-selected: #ffbb44;
   --button-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  --button-space: 1vmin;
+  --button-space: 5px;
   --button-bg: #eef2ff;
   --button-bg-active: rgba(20, 180, 200, 0.2);
   --button-text: #497283;
@@ -139,11 +139,12 @@ nav * {
 
 /* --- Left-Right --- */
 .left {
-  flex-basis: 800px;
+  flex-basis: 930px;
   flex-grow: 0;
   background: var(--bg-layer);
 }
 .right {
+  display: none;
   flex-grow: 1;
   background: var(--bg-layer);
 }
@@ -174,9 +175,17 @@ nav * {
 }
 /* content */
 .body {
-  flex-basis: 540px;
   flex: 1;
   padding: var(--space);
+}
+.left .body {
+  margin: auto; /* 가운데 정렬 */
+  width: 100%; /* 최대크기로 */
+  max-width: 800px; /* 800px이하 */
+}
+.right .body {
+  overflow-y: scroll; /* 스크롤 가능 */
+  opacity: 0; /* 애니메이션 기본은 0부터 */
 }
 
 /* ================== Left Layout ================== */
@@ -246,6 +255,7 @@ nav * {
 }
 
 /* ================== Right Layout ================== */
+/* --- head 버튼 --- */
 .right_open::after {
   display: block;
   position: absolute;
@@ -262,14 +272,11 @@ nav * {
 .right_close::after {
   animation: disappear 0.2s forwards;
 }
-.right .body {
-  overflow-y: scroll;
-  opacity: 0;
-}
+
+/* --- 기록 --- */
 .body.log * {
   font-size: var(--log-font-size);
 }
-
 .log_list {
   margin-bottom: 20px;
 

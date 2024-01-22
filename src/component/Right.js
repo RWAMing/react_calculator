@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 
 // Component
 import RightHead from './RightHead';
+import Log from './RightBody/Log';
+import Memory from './RightBody/Memory';
 
 // Function
 import makeObjState from './makeObjState';
@@ -16,7 +18,8 @@ export default function Right() {
   return (
     <div className='colunm right'>
       <RightHead body={rightBody} />
-      {rightBody.state}
+      <Log />
+      <Memory />
     </div>
   );
 }
