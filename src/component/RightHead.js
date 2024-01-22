@@ -30,7 +30,7 @@ export default function RightHead(props) {
         openSoon.classList.add('open');
         opend.classList.remove('open'); // 원래꺼 클래스 삭제
 
-        console.log(String(openSoon.classList).split(' ')[1]);
+        console.log(String(openSoon.classList).split(' ')[1]); // <- 이거 이용해야함
 
         // 페이지 열기
       }, 200);
