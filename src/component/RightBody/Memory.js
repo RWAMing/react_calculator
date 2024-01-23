@@ -5,5 +5,5 @@ import React, { useState, useEffect } from 'react';
 // Export
 export default function Memory() {
   // Return
-  return <div className='body memory colunm'>메모리 공간</div>;
+  return <ul className='body memory colunm'>메모리 공간</ul>;
 }

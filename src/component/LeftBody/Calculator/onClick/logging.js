@@ -12,11 +12,11 @@ import React, { useState, useEffect } from 'react';
  * @param {String} output 결과값 3
  */
 export default function logging(prev, symbol, num, output) {
-  const newLog = document.createElement('div');
-  newLog.classList.add('log_list');
+  const newLog = document.createElement('li');
+  newLog.classList.add('output_list');
 
   const newLogWay = document.createElement('p');
-  newLogWay.classList.add('log_way');
+  newLogWay.classList.add('way');
   newLogWay.innerText = `${prev}${symbol}${num}=`;
   newLog.appendChild(newLogWay);
 
