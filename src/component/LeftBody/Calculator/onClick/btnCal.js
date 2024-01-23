@@ -31,7 +31,7 @@ export default function btnCal(button, props) {
   else if (calPrev.state !== '') {
     // 계산용 변수
     let prev = Number(calPrev.state);
-    const num = Number(calNum.state);
+    let num = Number(calNum.state);
     const bigPrev = BigInt(Math.floor(prev));
     const bigNum = BigInt(Math.floor(num));
     let symbol = '';
@@ -39,6 +39,9 @@ export default function btnCal(button, props) {
     let output = '';
 
     // = 버튼 누름
+    // 연속으로 누를 시
+    // 1번째 : 일반적 결과값 도출
+    // 2번째 이상 : 결과값 + 식 오른쪽숫자 도출 => 이후 식에 결과값 + 오른쪽 숫자 형태로 나오게 해야함
     if (value === '=') {
       if (value !== calWay.state.slice(-1)) {
         symbol = calWay.state.slice(-1); // 계산기호 추출
@@ -46,12 +49,9 @@ export default function btnCal(button, props) {
         // 계산기호 추출했더니 =나옴 : 다시 추출
         const posiHead = calWay.state.replace(/^-/, ''); // 맨앞 - 삭제
         const iNaN = posiHead.search(/[^0-9]/); // 숫자아닌 글자의 i
-        prev = Number(posiHead.slice(iNaN + 1, -1)); // 두번째 수
+        prev = num;
+        num = Number(posiHead.slice(iNaN + 1, -1)); // 두번째 수
         symbol = posiHead[iNaN]; // 심볼 추출
-        console.log(posiHead);
-        console.log(iNaN);
-        console.log(prev);
-        console.log(symbol);
       }
     } else {
       symbol = value;
@@ -90,5 +90,5 @@ export default function btnCal(button, props) {
       err(props.states); // 문제시 에러띄우고, 모든 값 지움
     }
   }
-  calNew.set(value); // 다음 입력에 참고
+  calNew.set(value); // 다음 계산시, 직전에 누른 버튼 참고
 }
