@@ -16,7 +16,7 @@ import err from './err';
  * @prop {String} value +, -, ×, ÷, = ...
  * @prop {*} sideClass 추가 클래스명
  */
-export default function btnSymbol(button, props) {
+export default function btnCal(button, props) {
   // Props
   const { value, sideClass, states } = props;
   const { calWay, calNum, calPrev, calNew } = states;
