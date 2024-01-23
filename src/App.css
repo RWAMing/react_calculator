@@ -38,14 +38,6 @@
     opacity: 1;
   }
 }
-@keyframes disappear {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
 
 /* ================== Reset ================== */
 * {
@@ -114,7 +106,7 @@ li {
   animation: appear 0.2s forwards;
 }
 .disappear {
-  animation: disappear 0.2s forwards;
+  animation: appear 0.2s forwards reverse;
 }
 
 /* ================== Root Layout ================== */
@@ -127,14 +119,30 @@ li {
 }
 
 /* --- Nav --- */
+@keyframes open {
+  from {
+    width: 0;
+  }
+  to {
+    width: 600px;
+  }
+}
+.open_nav {
+  animation: open 0.5s forwards ease-in-out;
+}
+.close_nav {
+  animation: open 0.5s forwards ease-in-out reverse;
+}
 nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 0;
+  z-index: 1;
+  height: 100vh;
+  background-color: white;
 }
 nav * {
-  width: 0;
+  display: none;
   opacity: 0;
 }
 
@@ -149,8 +157,8 @@ nav * {
   flex-grow: 1;
   background: var(--bg-layer);
   * {
-    color: white;
     font-size: var(--right-font-size);
+    color: white;
   }
 }
 /* head */
@@ -173,11 +181,15 @@ nav * {
 }
 .button_nav {
   display: inline-block;
+  position: relative;
+  z-index: 1;
   font-size: 26px;
   transform: scaleX(1.1);
 }
 .title {
   margin-left: 20px;
+  position: relative;
+  z-index: 1;
   float: left;
   font-size: 20px;
 }
@@ -206,8 +218,8 @@ nav * {
   text-align: right;
 }
 .cal_way {
-  flex: 0;
   flex-basis: 30px;
+  flex: 0;
   min-height: 20px;
   font-size: 20px;
   color: white;
