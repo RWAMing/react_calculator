@@ -16,14 +16,14 @@ export default function btnNumExtra(props) {
   const { calWay, calNum, calPrev, calNew } = states;
 
   // 0아님
-  if (calNum.state !== 0) {
+  if (calNum.state !== '0') {
     // 음수인데, 끝자리 . 혹은 0
-    if (calNum.value[0] === '-') {
-      calNum.set(calNum.value.slice(1));
+    if (calNum.state[0] === '-') {
+      calNum.set(calNum.state.slice(1));
     }
     // 끝자리 .에 양수임
     else {
-      calNum.set(`-${calNum.value}`);
+      calNum.set(`-${calNum.state}`);
     }
   }
 }

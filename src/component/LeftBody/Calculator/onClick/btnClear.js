@@ -25,5 +25,6 @@ export default function btnClear(props) {
     calWay.set('');
     calPrev.set('');
     calNew.set('clear');
+    document.querySelector('.right .body.log').innerHTML = '';
   }
 }

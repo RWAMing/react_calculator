@@ -206,13 +206,15 @@ nav * {
   text-align: right;
 }
 .cal_way {
+  flex: 0;
+  flex-basis: 30px;
   min-height: 20px;
   font-size: 20px;
   color: white;
   opacity: var(--opacity-dim);
 }
 .cal_num {
-  flex-grow: 1;
+  flex: 1;
   margin-bottom: var(--space);
   width: fit-content;
   font-weight: 800;

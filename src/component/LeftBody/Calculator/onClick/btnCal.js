@@ -21,10 +21,10 @@ export default function btnCal(button, props) {
   const { value, sideClass, states } = props;
   const { calWay, calNum, calPrev, calNew } = states;
 
-  // 이전 숫자 없음 (이 경우 =는 반응x)
-  if (calPrev.state === '' && value !== '=') {
+  // (=버튼 누를 경우는 무시) 저장된 숫자x, 직전이 =인데 다른버튼 누름
+  if (value !== '=' && (calPrev.state === '' || calNew.state === '=')) {
     calPrev.set(calNum.state); // 입력했던 숫자 저장
-    calWay.set(`${calNum.state}${value}`); // 입력했던 숫자, 기호 띄우기
+    calWay.set(`${calNum.state} ${value}`); // 입력했던 숫자, 기호 띄우기
   }
 
   // 이전 숫자가 있음
@@ -38,19 +38,16 @@ export default function btnCal(button, props) {
     let outputTry = '';
     let output = '';
 
-    // = 버튼 누름
-    // 연속으로 누를 시
-    // 1번째 : 일반적 결과값 도출
-    // 2번째 이상 : 결과값 + 식 오른쪽숫자 도출 => 이후 식에 결과값 + 오른쪽 숫자 형태로 나오게 해야함
+    // = 버튼
     if (value === '=') {
       if (value !== calWay.state.slice(-1)) {
         symbol = calWay.state.slice(-1); // 계산기호 추출
       } else {
         // 계산기호 추출했더니 =나옴 : 다시 추출
         const posiHead = calWay.state.replace(/^-/, ''); // 맨앞 - 삭제
-        const iNaN = posiHead.search(/[^0-9]/); // 숫자아닌 글자의 i
+        const iNaN = posiHead.search(/[^.0-9\s]/); // 숫자,공백, .아닌 글자의 i
         prev = num;
-        num = Number(posiHead.slice(iNaN + 1, -1)); // 두번째 수
+        num = Number(posiHead.trim().slice(iNaN + 1, -1)); // (공백빼고)두번째 수
         symbol = posiHead[iNaN]; // 심볼 추출
       }
     } else {
@@ -82,9 +79,9 @@ export default function btnCal(button, props) {
       calNum.set(output);
       calPrev.set(output);
       if (value === '=') {
-        calWay.set(`${prev}${symbol}${num}${value}`); // ex) 'prev ÷ num ='
+        calWay.set(`${prev} ${symbol} ${num} ${value}`); // ex) 'prev ÷ num ='
       } else {
-        calWay.set(`${output}${value}`); // ex) 'output ÷'
+        calWay.set(`${output} ${value}`); // ex) 'output ÷'
       }
     } else {
       err(props.states); // 문제시 에러띄우고, 모든 값 지움
