@@ -144,6 +144,9 @@ nav * {
   display: none;
   flex-grow: 1;
   background: var(--bg-layer);
+  * {
+    color: white;
+  }
 }
 /* head */
 .head {
@@ -276,7 +279,6 @@ nav * {
 /* --- 기록 --- */
 .body.log * {
   font-size: var(--log-font-size);
-  color: white;
 }
 .log_list {
   margin-bottom: 20px;

@@ -16,31 +16,29 @@ export default function RightHead(props) {
 
   // Function
   function changeMenu(clicked) {
-    const opend = document.querySelector('.open');
+    const opendMenu = document.querySelector('.open');
 
     // 해당 메뉴가 close 상태여야 함수 실행
-    if (opend !== clicked.target) {
+    if (opendMenu !== clicked.target) {
       // 원래 열렸던 요소 숨기기
-      opend.classList.add('disappear');
+      const opendName = String(opendMenu.classList).split(' ')[1]; // 클래스 이름 추출
+      const opendPage = document.querySelector(`.right .body.${opendName}`); // body 반환
+      opendPage.classList.add('disappear'); // body 안보이게 애니
 
       // 0.2초 뒤
       setTimeout(() => {
-        const opendName = String(opend.classList).split(' ')[1];
-        const opendPage = document.querySelector(`.right .body.${opendName}`);
-        opendPage.style.display = 'none'; // 요소 숨기기
-        opend.classList.remove('disappear'); // 효과용 클래스 삭제
-        opend.classList.remove('open'); // 원래꺼 클래스 삭제
-        console.log(`원래 열려있던 페이지 클래스 네임 : ${opendName}`);
+        opendMenu.classList.remove('open'); // 메뉴 클래스 삭제
+        opendPage.style.display = 'none'; // body 보관
+        opendPage.classList.remove('disappear'); // body 애니 삭제
 
-        // 메뉴 활성화 변경
-        const openSoon = clicked.target;
-        openSoon.classList.add('open');
+        // 메뉴 open 변경
+        const openMenu = clicked.target;
+        openMenu.classList.add('open');
 
         // 페이지 열기
-        const openName = String(openSoon.classList).split(' ')[1];
-        console.log(`이제 열릴 페이지 클래스 네임 : ${opendName}`);
-        const openPage = document.querySelector(`.right .body.${openName}`);
-        openPage.style.display = 'flex'; // 요소 드러내기
+        const openName = String(openMenu.classList).split(' ')[1]; // 클래스 이름 추출
+        const openPage = document.querySelector(`.right .body.${openName}`); // body 반환
+        openPage.style.display = 'flex'; // body 노출 (애니는 useEffect가 해줌)
 
         // useState 변경 (useEffect 실행)
         setMenu(openName);
