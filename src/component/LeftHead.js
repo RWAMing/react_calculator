@@ -58,10 +58,11 @@ export default function LeftHead() {
   // Return
   return (
     <div className='head'>
-      <button type='button' className='button_menu'>
-        <span className='button_nav' onClick={opanClose}>
-          &equiv;
-        </span>
+      <button
+        type='button'
+        className='button_menu button_nav'
+        onClick={opanClose}>
+        &equiv;
       </button>
       {title}
     </div>
