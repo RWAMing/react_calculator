@@ -10,6 +10,10 @@ import btnNum from './onClick/btnNum';
 import btnNumExtra from './onClick/btnNumExtra';
 import btnClear from './onClick/btnClear';
 import btnBack from './onClick/btnBack';
+import btnInverse from './onClick/btnInverse';
+import btnSquare from './onClick/btnSquare';
+import btnRoot from './onClick/btnRoot';
+import btnPercent from './onClick/btnPercent';
 import btnCal from './onClick/btnCal';
 
 // Function
@@ -38,8 +42,16 @@ export default function CalButton(props) {
       btnNumExtra(p); // +/-
     } else if (p.value === 'C' || p.value === 'CE') {
       btnClear(p); // CE, C
-    } else if (p.sideClass === 'side backspace') {
+    } else if (p.sideClass.match(/backspace/g)) {
       btnBack(p); // backspace
+    } else if (p.sideClass.match(/inverse/g)) {
+      btnInverse(p); // 1/x 역수
+    } else if (p.sideClass.match(/square/g)) {
+      btnSquare(p); // x2 제곱
+    } else if (p.sideClass.match(/root/g)) {
+      btnRoot(p); // x2 제곱
+    } else if (p.sideClass.match(/percent/g)) {
+      btnPercent(p); // x2 제곱
     } else {
       btnCal(e.target, p); // 계산기호, =
     }
