@@ -49,9 +49,9 @@ export default function CalButton(props) {
     } else if (p.sideClass.match(/square/g)) {
       btnSquare(p); // x2 제곱
     } else if (p.sideClass.match(/root/g)) {
-      btnRoot(p); // x2 제곱
+      btnRoot(p); // 루트2
     } else if (p.sideClass.match(/percent/g)) {
-      btnPercent(p); // x2 제곱
+      btnPercent(p); // %
     } else {
       btnCal(e.target, p); // 계산기호, =
     }
