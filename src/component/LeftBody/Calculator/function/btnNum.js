@@ -23,12 +23,13 @@ export default function btnNum(props) {
   if (checkSafe(strOutput)) {
     // 새번호 입력 대기상태
     console.log(
-      value,
-      sideClass,
-      calWay.state,
-      calNum.state,
-      calPrev.state,
-      calNew.state,
+      `sideClass ${sideClass}, 
+    value ${value}, 
+    calWay ${calWay.state}, 
+    calNum ${calNum.state}, 
+    calPrev ${calPrev.state}, 
+    calNew ${calNew.state}, 
+    `,
     );
     if (calNew.state !== false) {
       calNum.set(value); // 새 숫자 입력

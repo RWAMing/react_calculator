@@ -20,14 +20,25 @@ export default function btnCal(button, props) {
   // Props
   const { value, sideClass, states } = props;
   const { calWay, calNum, calPrev, calNew } = states;
+  console.log(
+    `sideClass ${sideClass}, 
+  value ${value}, 
+  calWay ${calWay.state}, 
+  calNum ${calNum.state}, 
+  calPrev ${calPrev.state}, 
+  calNew ${calNew.state}, 
+  `,
+  );
 
-  // (=버튼 누를 경우는 무시) 저장된 숫자x, 직전이 =인데 다른버튼 누름
-  if (value !== '=' && (calPrev.state === '' || calNew.state === '=')) {
-    calPrev.set(calNum.state); // 입력했던 숫자 저장
-    calWay.set(`${calNum.state} ${value}`); // 입력했던 숫자, 기호 띄우기
+  // 이전 숫자가 없거나, 직전이 =일 때. +−×÷ 입력.
+  // => 띄워진 숫자 + 기호
+  if ((calPrev.state === '' || calNew.state === '=') && value !== '=') {
+    calPrev.set(calNum.state); // 띄워진 숫자 저장
+    calWay.set(`${calNum.state} ${value}`); // 띄워진 숫자, 기호 띄우기
+    button.classList.add('button_use'); // 버튼 Active 유지하는 척 CSS
   }
 
-  // 이전 숫자가 있음
+  // 이전 숫자가 있음.
   else if (calPrev.state !== '') {
     // 계산용 변수
     let prev = Number(calPrev.state);
@@ -38,25 +49,29 @@ export default function btnCal(button, props) {
     let outputTry = '';
     let output = '';
 
-    // = 버튼
-    if (value === '=') {
-      if (value !== calWay.state.slice(-1)) {
-        symbol = calWay.state.slice(-1); // 계산기호 추출
-      } else {
-        // 계산기호 추출했더니 =나옴 : 다시 추출
-        const posiHead = calWay.state.replace(/^-/, ''); // 맨앞 - 삭제
-        const iNaN = posiHead.search(/[^.0-9\s]/); // 숫자,공백, .아닌 글자의 i
-        prev = num;
-        num = Number(posiHead.trim().slice(iNaN + 1, -1)); // (공백빼고)두번째 수
-        symbol = posiHead[iNaN]; // 심볼 추출
-      }
-    } else {
+    //
+    if (value !== '=') {
       symbol = value;
       document.querySelector('.button_use')?.classList.remove('button_use');
       button.classList.add('button_use'); // 버튼 Active 유지하는 척 CSS
     }
-
-    // 계산값 반환
+    // =누름
+    else if (value !== calWay.state.slice(-1)) {
+      // 직전에 =가 아님
+      symbol = calWay.state.slice(-1); // 계산기호 추출
+    } else {
+      // 직전에 계산이 =로 끝났음. +-×÷ 다시 찾기
+      const posiHead = calWay.state.replace(/^-/, ''); // 맨앞 - 삭제
+      const iNaN = posiHead.search(/[^.0-9\s]/); // 숫자,공백, .아닌 글자의 i
+      prev = num;
+      num = Number(posiHead.trim().slice(iNaN + 1, -1)); // (공백빼고)두번째 수
+      symbol = posiHead[iNaN]; // 심볼 추출
+    }
+    // 단순 기호 변경
+    // if (calNew.state === symbol) {
+    // }
+    // 계산
+    // else {
     if (symbol === '+') {
       outputTry = String(bigPrev + bigNum);
       output = String(prev + num);
@@ -66,9 +81,12 @@ export default function btnCal(button, props) {
     } else if (symbol === '×') {
       outputTry = String(bigPrev * bigNum);
       output = String(prev * num);
-    } else if (symbol === '÷') {
+    } else if (symbol === '÷' && num !== 0) {
       outputTry = String(bigPrev / bigNum);
       output = String(prev / num);
+    } else {
+      err(props.states); // 0으로 나눌 경우 에러
+      return;
     }
 
     // safe 확인
