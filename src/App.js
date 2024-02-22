@@ -27,10 +27,12 @@ export default function App() {
 
   // Effect
   useEffect(() => {
-    window.removeEventListener('load', responsiveLayout);
     window.addEventListener('load', responsiveLayout);
-    window.removeEventListener('resize', responsiveLayout);
     window.addEventListener('resize', responsiveLayout);
+    return () => {
+      window.removeEventListener('load', responsiveLayout);
+      window.removeEventListener('resize', responsiveLayout);
+    };
   }, []);
 
   // Return

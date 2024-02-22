@@ -50,8 +50,10 @@ export default function RightHead(props) {
   // 마운트 : 메뉴 버튼 누르면 바뀌는 이벤트 리스너 심기
   useEffect(() => {
     document.querySelectorAll('.right .button_menu').forEach((button) => {
-      button.removeEventListener('click', changeMenu);
       button.addEventListener('click', changeMenu);
+      return () => {
+        button.removeEventListener('click', changeMenu);
+      };
     });
     // 처음엔 기록 페이지 보여주기
     document.querySelector('.right .body.log').style.display = 'flex';
