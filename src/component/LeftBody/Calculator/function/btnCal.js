@@ -29,7 +29,7 @@ export default function btnCal(button, props) {
     button.classList.add('button_use'); // 버튼 Active 유지하는 척 CSS
   }
 
-  // 이전 숫자가 있고 직전이 +−×÷
+  // 이전 숫자가 있음.
   // -> 계산
   else if (calPrev.state !== '') {
     // 계산용 변수
@@ -42,7 +42,7 @@ export default function btnCal(button, props) {
     let output;
 
     // 계산기호 추출
-    if (calNew.state !== '=') {
+    if (calWay.state.slice(-1) !== '=') {
       // 직전이 =가 아니었음.
       symbol = calWay.state.slice(-1); // 계산기호 추출
     } else {
