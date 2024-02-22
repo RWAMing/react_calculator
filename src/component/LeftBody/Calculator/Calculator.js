@@ -22,8 +22,8 @@ export default function Calculator() {
   const calNew = makeObjState('first');
 
   // Effect
-  // .cal_num 요소 font-size 반응형
   useEffect(() => {
+    // .cal_num 요소 font-size 반응형
     const props = {
       target: document.querySelector('.cal_num'),
       ref: document.querySelector('.left'),
@@ -33,21 +33,9 @@ export default function Calculator() {
     window.addEventListener('load', (e) => fontVwHalfVh(e, props));
     window.addEventListener('resize', (e) => fontVwHalfVh(e, props));
 
-    let wait;
-    let ing;
-    function down(e) {
-      const value = String(e.key);
-      const keyProps = { states, value, sideClass: 'key' };
-      if (!Number.isNaN(Number(value))) {
-        btnNum(keyProps);
-      }
-    }
-    window.addEventListener('keydown', down);
-
     return () => {
       window.removeEventListener('load', (e) => fontVwHalfVh(e, props));
       window.removeEventListener('resize', (e) => fontVwHalfVh(e, props));
-      window.removeEventListener('keydown', down);
     };
   }, []);
 

@@ -22,6 +22,14 @@ export default function btnNum(props) {
   // 숫자크기 괜찮으면 실행
   if (checkSafe(strOutput)) {
     // 새번호 입력 대기상태
+    console.log(
+      value,
+      sideClass,
+      calWay.state,
+      calNum.state,
+      calPrev.state,
+      calNew.state,
+    );
     if (calNew.state !== false) {
       calNum.set(value); // 새 숫자 입력
     }

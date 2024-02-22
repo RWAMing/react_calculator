@@ -9,7 +9,12 @@ import btnRoot from './btnRoot';
 import btnPercent from './btnPercent';
 import btnCal from './btnCal';
 
-// 버튼 종류에 따라 다른 함수 실행 (클릭된요소, props전달)
+/** 버튼 종류에 따라 다른 함수 실행 (클릭된요소, props전달)
+ * @param {Event} e event
+ * @prop {Object} states { calWay, calNum, calPrev, calNew }
+ * @prop {String} value 버튼 텍스트
+ * @prop {*} sideClass 추가 클래스명
+ */
 export default function onclickType(e, p) {
   if (!Number.isNaN(parseInt(p.value, 10)) || p.value === '.') {
     btnNum(p); // 0~9 혹은 .

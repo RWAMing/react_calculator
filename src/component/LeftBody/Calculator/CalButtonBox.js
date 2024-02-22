@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 // Component
 import CalButton from './CalButton';
+import onclickType from './function/onclickType';
 
 /**
  * 계산기 버튼 박스 컴포넌트
@@ -14,6 +15,20 @@ import CalButton from './CalButton';
 export default function CalButtonBox(props) {
   // Props
   const { states } = props;
+
+  useEffect(() => {
+    // 키보드 입력으로도 가능
+    function onKeyDown(e) {
+      const value = String(e.key);
+      const keyProps = { states, value };
+      onclickType(e, keyProps);
+    }
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
 
   // Return
   return (
