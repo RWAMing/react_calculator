@@ -22,16 +22,7 @@ export default function btnNum(props) {
   // 숫자크기 괜찮으면 실행
   if (checkSafe(strOutput)) {
     // 새번호 입력 대기상태
-    console.log(
-      `sideClass ${sideClass}, 
-    value ${value}, 
-    calWay ${calWay.state}, 
-    calNum ${calNum.state}, 
-    calPrev ${calPrev.state}, 
-    calNew ${calNew.state}, 
-    `,
-    );
-    if (calNew.state !== false) {
+    if (calNew.state !== false || calNew.state === '=') {
       calNum.set(value); // 새 숫자 입력
     }
     // 숫자버튼 || .버튼 , 소수점 없는 상황

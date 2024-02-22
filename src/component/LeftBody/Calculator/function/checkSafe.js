@@ -9,8 +9,9 @@ import React, { useState, useEffect } from 'react';
  */
 export default function checkSafe(numberExpected) {
   // 자릿수 파악용 : String으로 변경후 -랑 . 삭제
-  const strNum = numberExpected.replace(/-/g, '');
-  const strInt = numberExpected.replace(/\./g, '');
+  const strExpected = String(numberExpected);
+  const strNum = strExpected.replace(/-/g, '');
+  const strInt = strExpected.replace(/\./g, '');
 
   // 소숫점 제외, 15자리 이하
   if (strInt.length < 16) {

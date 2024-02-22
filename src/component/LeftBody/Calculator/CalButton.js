@@ -38,8 +38,8 @@ export default function CalButton(props) {
     window.addEventListener('resize', (e) => fontHalfVh(e, prpsFtSize));
 
     return () => {
-      window.removeEventListener('load', (e) => fontHalfVh(e, prpsFtSize));
-      window.removeEventListener('resize', (e) => fontHalfVh(e, prpsFtSize));
+      window.removeEventListener('load', fontHalfVh);
+      window.removeEventListener('resize', fontHalfVh);
     };
   }, []);
 
