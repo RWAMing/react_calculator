@@ -16,6 +16,7 @@ function down(e) {
     }, 1500);
   }
 }
+
 function up() {
   clearInterval(wait);
   clearTimeout(ing);
