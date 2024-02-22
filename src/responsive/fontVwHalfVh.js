@@ -8,7 +8,7 @@
  * @property {Number} refSize target이 반응할 ref의 최대 width, height
  * @property {Number} vwh 폰트 vw(vh)단위 지정
  */
-export default function fontsizeVwHalfvh(event, props) {
+export default function fontVwHalfVh(event, props) {
   const { target, ref, refSize, vwh } = props;
   if (!target[0]) {
     adjust(target);

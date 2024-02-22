@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import CalButtonBox from './CalButtonBox';
 
 // Function
-import fontsizeVwHalfvh from '../../../responsive/fontsizeVwHalfvh';
+import fontVwHalfVh from '../../../responsive/fontVwHalfVh';
 import makeObjState from '../../makeObjState';
 
 /**
@@ -20,7 +20,7 @@ export default function Calculator() {
   const calNew = makeObjState('first');
 
   // Effect
-  // .cal_num 요소의 font-size 반응형
+  // .cal_num 요소 font-size 반응형
   useEffect(() => {
     const props = {
       target: document.querySelector('.cal_num'),
@@ -28,8 +28,10 @@ export default function Calculator() {
       refSize: 700,
       vwh: 9,
     };
-    window.addEventListener('load', (e) => fontsizeVwHalfvh(e, props));
-    window.addEventListener('resize', (e) => fontsizeVwHalfvh(e, props));
+    window.removeEventListener('load', (e) => fontVwHalfVh(e, props));
+    window.addEventListener('load', (e) => fontVwHalfVh(e, props));
+    window.removeEventListener('resize', (e) => fontVwHalfVh(e, props));
+    window.addEventListener('resize', (e) => fontVwHalfVh(e, props));
   }, []);
 
   // Return

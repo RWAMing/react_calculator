@@ -5,19 +5,18 @@
 /* eslint-disable radix */
 import React, { useState, useEffect } from 'react';
 
-// Component
-import btnNum from './onClick/btnNum';
-import btnNumExtra from './onClick/btnNumExtra';
-import btnClear from './onClick/btnClear';
-import btnBack from './onClick/btnBack';
-import btnInverse from './onClick/btnInverse';
-import btnSquare from './onClick/btnSquare';
-import btnRoot from './onClick/btnRoot';
-import btnPercent from './onClick/btnPercent';
-import btnCal from './onClick/btnCal';
-
 // Function
-import fontsizeHalfvh from '../../../responsive/fontsizeHalfvh';
+import btnNum from './function/btnNum';
+import btnNumExtra from './function/btnNumExtra';
+import btnClear from './function/btnClear';
+import btnBack from './function/btnBack';
+import btnInverse from './function/btnInverse';
+import btnSquare from './function/btnSquare';
+import btnRoot from './function/btnRoot';
+import btnPercent from './function/btnPercent';
+import btnCal from './function/btnCal';
+import pressKey from './function/pressKey';
+import fontHalfVh from '../../../responsive/fontHalfVh';
 
 /**
  * @prop {Object} states { calWay, calNum, calPrev, calNew }
@@ -58,16 +57,19 @@ export default function CalButton(props) {
   }
 
   // Effect
-  // .cal_button요소들의 font-size 반응형
+  // .cal_button의 font-size 반응
   useEffect(() => {
-    const propsFontSize = {
+    const prpsFtSize = {
       target: [...document.querySelectorAll('.cal_button')],
       ref: [...document.querySelectorAll('.cal_button')][0],
       refSize: 150,
       vwh: 28,
     };
-    window.addEventListener('load', (e) => fontsizeHalfvh(e, propsFontSize));
-    window.addEventListener('resize', (e) => fontsizeHalfvh(e, propsFontSize));
+    window.removeEventListener('load', (e) => fontHalfVh(e, prpsFtSize));
+    window.addEventListener('load', (e) => fontHalfVh(e, prpsFtSize));
+    window.removeEventListener('resize', (e) => fontHalfVh(e, prpsFtSize));
+    window.addEventListener('resize', (e) => fontHalfVh(e, prpsFtSize));
+    pressKey();
   }, []);
 
   // Return
