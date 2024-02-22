@@ -9,6 +9,7 @@ function down(e) {
   console.log(number);
   const keyProps = { states: 'states', number, sideClass: 'key' };
   if (!Number.isNaN(Number(number))) {
+    // 이거 states 넣어야함
     btnNum(keyProps);
     wait = setTimeout(() => {
       ing = setInterval(btnNum(keyProps), 300);
