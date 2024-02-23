@@ -25,6 +25,7 @@ export default function checkSafe(numberExpected) {
   if (strNum.indexOf('.') !== -1) {
     return true;
   }
+
   // 소수점 없는 16자리는 safeInteger 확인
   const chk = {
     min: BigInt(Number.MIN_SAFE_INTEGER),
