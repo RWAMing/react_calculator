@@ -26,6 +26,7 @@ export default function btnNum(props) {
       console.log('새번호 대기거나, 직전 =였거나, 숫자를 누름');
       calNum.set(value); // 새 숫자 입력
     }
+
     // 소수점X, .입력
     // 소수점O, 숫자입력 -> 출력
     else if (
@@ -34,10 +35,12 @@ export default function btnNum(props) {
     ) {
       calNum.set(strOutput);
     }
+
     // 소수점X, 숫자 입력 -> 맨앞에 0 지우기
     else if (calNum.state.indexOf('.') === -1 && value !== '.') {
       calNum.set(strOutput.replace(/^0/, ''));
     }
+
     // 소수점 O, .입력 -> 실행X
 
     calNew.set(false); // 새 번호 입력 후, 대기 해제
