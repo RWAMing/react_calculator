@@ -51,6 +51,9 @@ export default function RightHead(props) {
   useEffect(() => {
     document.querySelectorAll('.right .button_menu').forEach((button) => {
       button.addEventListener('click', changeMenu);
+      return () => {
+        button.removeEventListener('click', changeMenu);
+      };
     });
     // 처음엔 기록 페이지 보여주기
     document.querySelector('.right .body.log').style.display = 'flex';

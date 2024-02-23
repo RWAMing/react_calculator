@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
@@ -6,8 +7,9 @@ import React, { useState, useEffect } from 'react';
 import CalButtonBox from './CalButtonBox';
 
 // Function
-import fontsizeVwHalfvh from '../../../responsive/fontsizeVwHalfvh';
+import fontVwHalfVh from '../../../responsive/fontVwHalfVh';
 import makeObjState from '../../makeObjState';
+import btnNum from './function/btnNum';
 
 /**
  * 계산기 컴포넌트
@@ -20,16 +22,21 @@ export default function Calculator() {
   const calNew = makeObjState('first');
 
   // Effect
-  // .cal_num 요소의 font-size 반응형
   useEffect(() => {
+    // .cal_num 요소 font-size 반응형
     const props = {
       target: document.querySelector('.cal_num'),
       ref: document.querySelector('.left'),
       refSize: 700,
       vwh: 9,
     };
-    window.addEventListener('load', (e) => fontsizeVwHalfvh(e, props));
-    window.addEventListener('resize', (e) => fontsizeVwHalfvh(e, props));
+    window.addEventListener('load', (e) => fontVwHalfVh(e, props));
+    window.addEventListener('resize', (e) => fontVwHalfVh(e, props));
+
+    return () => {
+      window.removeEventListener('load', (e) => fontVwHalfVh(e, props));
+      window.removeEventListener('resize', (e) => fontVwHalfVh(e, props));
+    };
   }, []);
 
   // Return

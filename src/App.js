@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
@@ -28,6 +29,10 @@ export default function App() {
   useEffect(() => {
     window.addEventListener('load', responsiveLayout);
     window.addEventListener('resize', responsiveLayout);
+    return () => {
+      window.removeEventListener('load', responsiveLayout);
+      window.removeEventListener('resize', responsiveLayout);
+    };
   }, []);
 
   // Return
