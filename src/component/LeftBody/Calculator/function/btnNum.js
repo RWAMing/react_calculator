@@ -40,7 +40,6 @@ export default function btnNum(props) {
     else if (calNum.state.indexOf('.') === -1 && value !== '.') {
       calNum.set(strOutput.replace(/^0/, ''));
     }
-
     // 소수점 O, .입력 -> 실행X
 
     calNew.set(false); // 새 번호 입력 후, 대기 해제
