@@ -21,18 +21,26 @@ export default function btnNum(props) {
 
   // 숫자크기 괜찮으면 실행
   if (checkSafe(strOutput)) {
-    // 새번호 입력 대기상태
-    if (calNew.state !== false || calNew.state === '=') {
+    // 새번호 대기거나, 직전 =였거나, 숫자를 누름
+    if (value !== '.' && (calNew.state !== false || calNew.state === '=')) {
+      console.log('새번호 대기거나, 직전 =였거나, 숫자를 누름');
       calNum.set(value); // 새 숫자 입력
     }
-    // 숫자버튼 || .버튼 , 소수점 없는 상황
+
+    // 소수점X, .입력
+    // 소수점O, 숫자입력 -> 출력
     else if (
-      (value === '.' && calNum.state.indexOf('.') === -1) ||
-      value !== '.'
+      (calNum.state.indexOf('.') === -1 && value === '.') ||
+      (calNum.state.indexOf('.') !== -1 && value !== '.')
     ) {
       calNum.set(strOutput);
     }
-    // .인데, 소수점 존재 => 반응 없음
+
+    // 소수점X, 숫자 입력 -> 맨앞에 0 지우기
+    else if (calNum.state.indexOf('.') === -1 && value !== '.') {
+      calNum.set(strOutput.replace(/^0/, ''));
+    }
+    // 소수점 O, .입력 -> 실행X
 
     calNew.set(false); // 새 번호 입력 후, 대기 해제
   }
