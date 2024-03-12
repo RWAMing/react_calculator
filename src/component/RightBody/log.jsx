@@ -1,11 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
-
-export default function Log({ data }) {
-  return (
-    <ol>
-      {data.map((v) => (
-        <li>{v}</li>
-      ))}
-    </ol>
-  );
+// Export
+export default function Log() {
+  // Return
+  return <ul className='body log colunm'></ul>;
 }
