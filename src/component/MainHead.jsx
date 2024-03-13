@@ -61,7 +61,8 @@ export default function MainHead() {
       <button
         type='button'
         className='button_menu button_nav'
-        onClick={opanClose}>
+        onClick={opanClose}
+      >
         &equiv;
       </button>
       {title}

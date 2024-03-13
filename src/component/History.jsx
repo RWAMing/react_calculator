@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 // Component
 import Log from './History/Log';
@@ -10,9 +10,7 @@ import changeMenu from './changeMenu';
 const HistoryContext = useContext(createContext(null));
 
 /** Component - History menu button */
-function HistoryMenu(props) {
-  const { name, className } = props;
-
+function HistoryMenu({ name, className }) {
   return (
     <button
       type='button'
@@ -35,7 +33,7 @@ export function HistoryHeadBar() {
 
 export default function History() {
   /*
-  done 1. 버튼 클릭 감지 = onclick
+  done 1. 버튼 클릭 감지 = onclic
   2. 무슨 버튼인지 확인
   3. 해당 body로 바꾸기
   */
