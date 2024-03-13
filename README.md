@@ -11,7 +11,7 @@ It is an App for me to study JS, React.
 
 #### #8 Check all names of variables, functions, files
 
-Start
+in progress...
 
 <br>
 

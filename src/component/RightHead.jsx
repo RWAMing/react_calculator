@@ -5,8 +5,8 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import Log from './RightBody/Log';
-import Memory from './RightBody/Memory';
+import Log from './RightBody/Log.jsx';
+import Memory from './RightBody/Memory.jsx';
 
 /**
  * @prop {Object} body - {state, set}

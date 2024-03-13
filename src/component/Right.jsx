@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import RightHead from './RightHead';
-import Log from './RightBody/Log';
-import Memory from './RightBody/Memory';
+import RightHead from './RightHead.jsx';
+import Log from './RightBody/Log.jsx';
+import Memory from './RightBody/Memory.jsx';
 
 // Export
 export default function Right() {
