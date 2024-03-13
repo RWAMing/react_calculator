@@ -13,6 +13,8 @@ It is an App for me to study JS, React.
 
 in progress...
 
+- Fix error by #7
+
 <br>
 
 ### 2024.03.12.Tue
