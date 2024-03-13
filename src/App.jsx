@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 // Component
-import Nav from './component/Nav';
-import Left from './component/Left';
-import Right from './component/Right';
+import Left from './component/Left.jsx';
+import Right from './component/Right.jsx';
+import Nav from './component/Nav.jsx';
 
 // Export
 export default function App() {

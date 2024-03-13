@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import CalButton from './CalButton';
+import CalButton from './CalButton.jsx';
 
 /**
  * 계산기 버튼 박스 컴포넌트

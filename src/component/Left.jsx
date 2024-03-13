@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import LeftHead from './LeftHead';
-import Calculator from './LeftBody/Calculator/Calculator';
+import LeftHead from './LeftHead.jsx';
+import Calculator from './LeftBody/Calculator/Calculator.jsx';
 
 // Export
 export default function Left() {
