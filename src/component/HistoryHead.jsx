@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import changeMenu from './historyMenu';
 
-/** Component - History 메뉴 버튼 */
+/** Component - History menu button */
 function HistoryMenu(props) {
-  const { name, className, states } = props;
+  const { name, className, propsCopy } = props;
+  const log = useRef(0);
+  const memory = useRef(0);
+
+  const refs = { log, memory };
 
   return (
     <button
+      ref={() => (className === 'log' ? log : memory)}
       type='button'
       className={`button_menu ${className}`}
-      onClick={() => changeMenu(props)}>
+      onClick={(e) => changeMenu(e, propsCopy)}>
       {name}
     </button>
   );
 }
 
-/** Component - 헤더 우측(History) 메뉴 바 */
+/** Component - History header(menu bar) */
 export default function HistoryHead(props) {
-  // Effect
-
-  // // 메뉴 변경시마다 : appear 애니메이션
-  // useEffect(() => {
-  //   document.querySelector(`.right .body.${menu}`).classList.add('appear');
-  // }, [menu]);
+  // 메뉴 변경시마다 : appear 애니메이션
 
   // Return
   return (
