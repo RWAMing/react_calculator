@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Function
-import onclickType from './features/onclickType';
+import onclickType from './calculation/onclickType';
 import fontHalfVh from '../../responsive/fontHalfVh';
 
 /**
