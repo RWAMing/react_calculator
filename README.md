@@ -11,7 +11,7 @@ It is an App for me to study JS, React.
 
 #### #15 Arrange code about History component
 
-Using React hooks(state, effect, context, memo),
+Used with React hooks(state, effect, context, memo),
 code of History component was organized.
 
 #### #13 Fix conflict between ESLint and Prettier
