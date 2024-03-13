@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 // Function
 import onclickType from './function/onclickType';
-import fontHalfVh from '../../../responsive/fontHalfVh';
+import fontHalfVh from '../../responsive/fontHalfVh';
 
 /**
  * @prop {Object} states { calWay, calNum, calPrev, calNew }

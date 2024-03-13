@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Export
-export default function LeftHead() {
+export default function MainHead() {
   // State
   const [titleName, setTitleName] = useState('표준');
   const [title, setTitle] = useState(<h1 className='title'>{titleName}</h1>);

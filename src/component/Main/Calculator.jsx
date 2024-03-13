@@ -4,11 +4,11 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
+import makeObjState from '../makeObjState';
 import CalButtonBox from './CalButtonBox.jsx';
 
 // Function
-import fontVwHalfVh from '../../../responsive/fontVwHalfVh';
-import makeObjState from '../../makeObjState';
+import fontVwHalfVh from '../../responsive/fontVwHalfVh';
 
 /**
  * 계산기 컴포넌트

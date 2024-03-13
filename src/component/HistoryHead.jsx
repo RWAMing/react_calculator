@@ -11,7 +11,7 @@ import Memory from './RightBody/Memory.jsx';
 /**
  * @prop {Object} body - {state, set}
  */
-export default function RightHead(props) {
+export default function HistoryHead(props) {
   const [menu, setMenu] = useState('log');
 
   // Function
