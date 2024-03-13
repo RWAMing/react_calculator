@@ -2,8 +2,8 @@ import React from 'react';
 
 // Component
 import HistoryHead from './HistoryHead.jsx';
-import Log from './RightBody/Log.jsx';
-import Memory from './RightBody/Memory.jsx';
+import Log from './History/Log.jsx';
+import Memory from './History/Memory.jsx';
 
 // Export
 export default function History() {

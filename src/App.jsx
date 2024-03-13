@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 // Component
-import Left from './component/Left.jsx';
-import Right from './component/Right.jsx';
+import Main from './component/Main.jsx';
+import History from './component/History.jsx';
 import Nav from './component/Nav.jsx';
 
 // Export
@@ -39,8 +39,8 @@ export default function App() {
   return (
     <div className='App bg'>
       <Nav />
-      <Left />
-      <Right />
+      <Main />
+      <History />
     </div>
   );
 }

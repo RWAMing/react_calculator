@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 // Component
 import MainHead from './MainHead.jsx';
-import Calculator from './LeftBody/Calculator/Calculator.jsx';
+import Calculator from './Main/Calculator.jsx';
 
 // Export
 export default function Main() {
