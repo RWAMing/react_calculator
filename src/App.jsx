@@ -11,6 +11,7 @@ import Nav from './component/Nav';
 
 // Export
 export default function App() {
+  // 미디어쿼리로 바꿔야함
   // Function
   function responsiveLayout() {
     const app = document.querySelector('.App');
