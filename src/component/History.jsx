@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 import Log from './History/Log';
 import Memory from './History/Memory';
@@ -9,16 +9,23 @@ const HistoryProps = createContext(null);
 // component
 function HistoryMenu(props) {
   const { name, className } = props;
-  const { content, setContent } = useContext(HistoryProps);
+  const { setContent, contentName, setContentName } = useContext(HistoryProps);
 
   return (
     <button
       type='button'
       className={`button_menu ${className}`}
       onClick={(e) => {
-        const bodyName = String(content).match(/[a-z]||[A-Z]/g).toLowCase;
-        if (e.currentTarget.className.match(bodyName)) {
-          setContent('연습');
+        const buttonName = e.currentTarget.className.split(` `)[1];
+
+        if (buttonName !== contentName) {
+          if (buttonName === 'log') {
+            setContent(<Log />);
+          } else {
+            setContent(<Memory />);
+          }
+          setContentName(buttonName);
+          console.log(buttonName);
         }
       }}
     >
@@ -38,14 +45,14 @@ export function HistoryHead() {
 
 export default function History() {
   const [content, setContent] = useState(<Log />);
+  const [contentName, setContentName] = useState('log');
+  const value = useMemo(
+    () => ({ setContent, contentName, setContentName }),
+    [setContent, contentName, setContentName],
+  );
 
   return (
-    <HistoryProps.Provider
-      log={<Log />}
-      memory={<Memory />}
-      content={content}
-      setContent={setContent}
-    >
+    <HistoryProps.Provider value={value}>
       <div className='colunm right'>
         <HistoryHead />
         {content}
