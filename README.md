@@ -9,6 +9,11 @@ It is an App for me to study JS, React.
 
 ### 2024.03.13.Wed
 
+#### #15 Arrange code about History component
+
+Used with React hooks(state, effect, context, memo),
+code of History component was organized.
+
 #### #13 Fix conflict between ESLint and Prettier
 
 There is an error by #12 because of ESLint and Prettier settings.
