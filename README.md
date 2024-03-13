@@ -11,7 +11,8 @@ It is an App for me to study JS, React.
 
 #### #8 Check all names of variables, functions, files
 
-> in progress...
+All folder, file's name is changed.
+Others is going to be changed with next issues.
 
 #### #10 Check all names of variables, functions, files
 
