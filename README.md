@@ -11,9 +11,12 @@ It is an App for me to study JS, React.
 
 #### #8 Check all names of variables, functions, files
 
-in progress...
+> in progress...
 
-- Fix error by #7
+#### #10 Check all names of variables, functions, files
+
+An error by #7 in 8 is fixed.
+It occures because of no extention when components are imported.
 
 <br>
 
