@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 // Component
 import HistoryHead from './HistoryHead.jsx';
 import Log from './History/Log.jsx';
 import Memory from './History/Memory.jsx';
 
-// Export
+const HistoryContext = useContext(createContext(null));
+
 export default function History() {
   /*
   1. 버튼 클릭 감지 = onclick
@@ -13,14 +14,18 @@ export default function History() {
   3. 해당 body로 바꾸기
   */
 
-  const [menu, setMenu] = useState('log');
-
   const [historyBody, setHistoryBody] = useState(<Log />);
-  // Return
+
   return (
-    <div className='colunm right'>
-      <HistoryHead />
-      {historyBody}
-    </div>
+    <HistoryContext.Provider
+      body={historyBody}
+      setBody={setHistoryBody}
+      log={<Log />}
+      memory={<Memory />}>
+      <div className='colunm right'>
+        <HistoryHead />
+        {historyBody}
+      </div>
+    </HistoryContext.Provider>
   );
 }

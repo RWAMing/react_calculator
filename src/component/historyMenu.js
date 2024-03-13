@@ -1,7 +1,5 @@
-import { useRef } from 'react';
-
 /** Change history body */
-export default function changeMenu(clicked, props) {
+export default function changeMenu(clickButton, propsSend) {
   // const opendMenu = document.querySelector('.open');
   // // 해당 메뉴가 close 상태여야 함수 실행
   // if (opendMenu !== clicked.target) {

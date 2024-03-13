@@ -1,20 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import changeMenu from './historyMenu';
 
 /** Component - History menu button */
 function HistoryMenu(props) {
-  const { name, className, propsCopy } = props;
-  const log = useRef(0);
-  const memory = useRef(0);
-
-  const refs = { log, memory };
+  const { name, className, log, memory } = props;
 
   return (
     <button
-      ref={() => (className === 'log' ? log : memory)}
       type='button'
       className={`button_menu ${className}`}
-      onClick={(e) => changeMenu(e, propsCopy)}>
+      onClick={(event) => changeMenu(event.target, propsSend)}>
       {name}
     </button>
   );
