@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /** Change history body */
 export default function changeMenu(clickButton, propsSend) {
   // const opendMenu = document.querySelector('.open');
