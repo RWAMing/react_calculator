@@ -48,7 +48,8 @@ export default function CalButton(props) {
     <button
       type='button'
       className={`cal_button button${setSideClass()}`}
-      onClick={(e) => onclickType(e, props)}>
+      onClick={(e) => onclickType(e, props)}
+    >
       {value}
     </button>
   );

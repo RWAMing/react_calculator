@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import CalButton from './CalButton.jsx';
+import CalButton from './CalButton';
 
 /**
  * 계산기 버튼 박스 컴포넌트
@@ -30,27 +30,36 @@ export default function CalButtonBox(props) {
       <CalButton
         states={states}
         // prettier-ignore
-        value={<span className='frasl'>
+        value={(
+          <span className='frasl'>
             <sup>1</sup>
             <span>&frasl;</span>
             x
-          </span>}
+          </span>
+)}
         sideClass='side'
       />
       <CalButton
         states={states}
         // prettier-ignore
-        value={<>x<sup>2</sup></>}
+        value={(
+          <>
+            x
+            <sup>2</sup>
+          </>
+)}
         sideClass='side'
       />
       <CalButton
         states={states}
         // prettier-ignore
-        value={<span className='radic'>
+        value={(
+          <span className='radic'>
             <sup>2</sup>
             <span>&radic;</span>
             x
-          </span>}
+          </span>
+)}
         sideClass='side'
       />
       <CalButton states={states} value='&#247;' sideClass='side' />

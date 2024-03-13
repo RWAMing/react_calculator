@@ -4,10 +4,10 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import makeObjState from '../makeObjState';
-import CalButtonBox from './CalButtonBox.jsx';
+import CalButtonBox from './CalButtonBox';
 
 // Function
+import makeObjState from '../makeObjState';
 import fontVwHalfVh from '../../responsive/fontVwHalfVh';
 
 /**

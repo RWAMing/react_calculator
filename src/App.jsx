@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 // Component
-import Main from './component/Main.jsx';
-import History from './component/History.jsx';
-import Nav from './component/Nav.jsx';
+import Main from './component/Main';
+import History from './component/History';
+import Nav from './component/Nav';
 
 // Export
 export default function App() {

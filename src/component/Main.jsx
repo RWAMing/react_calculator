@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 
 // Component
-import MainHead from './MainHead.jsx';
-import Calculator from './Main/Calculator.jsx';
+import MainHead from './MainHead';
+import Calculator from './Main/Calculator';
 
 // Export
 export default function Main() {
