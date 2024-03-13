@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-/** Change history body */
-export default function changeMenu(clickButton, propsSend) {
+/** Change body */
+export default function changeMenu(event, props) {
   // const opendMenu = document.querySelector('.open');
   // // 해당 메뉴가 close 상태여야 함수 실행
   // if (opendMenu !== clicked.target) {

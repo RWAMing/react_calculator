@@ -1,28 +1,33 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// Component
 import Log from './History/Log';
 import Memory from './History/Memory';
-// function
-import changeMenu from './changeMenu';
 
 // context
-const HistoryContext = useContext(createContext(null));
+const HistoryProps = createContext(null);
 
-/** Component - History menu button */
-function HistoryMenu({ name, className }) {
+// component
+function HistoryMenu(props) {
+  const { name, className } = props;
+  const { content, setContent } = useContext(HistoryProps);
+
   return (
     <button
       type='button'
       className={`button_menu ${className}`}
-      onClick={() => changeMenu()}
+      onClick={(e) => {
+        const bodyName = String(content).match(/[a-z]||[A-Z]/g).toLowCase;
+        if (e.currentTarget.className.match(bodyName)) {
+          setContent('연습');
+        }
+      }}
     >
       {name}
     </button>
   );
 }
 
-export function HistoryHeadBar() {
+export function HistoryHead() {
   return (
     <div className='head'>
       <HistoryMenu name='기록' className='log' />
@@ -32,26 +37,19 @@ export function HistoryHeadBar() {
 }
 
 export default function History() {
-  /*
-  done 1. 버튼 클릭 감지 = onclic
-  2. 무슨 버튼인지 확인
-  3. 해당 body로 바꾸기
-  */
-  // 메뉴 변경시마다 : appear 애니메이션
-
-  const [historyBody, setHistoryBody] = useState(<Log />);
+  const [content, setContent] = useState(<Log />);
 
   return (
-    <HistoryContext.Provider
+    <HistoryProps.Provider
       log={<Log />}
       memory={<Memory />}
-      body={historyBody}
-      setBody={setHistoryBody}
+      content={content}
+      setContent={setContent}
     >
       <div className='colunm right'>
-        <HistoryHeadBar />
-        {historyBody}
+        <HistoryHead />
+        {content}
       </div>
-    </HistoryContext.Provider>
+    </HistoryProps.Provider>
   );
 }
