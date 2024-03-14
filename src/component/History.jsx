@@ -3,16 +3,12 @@ import React, { useContext, useState, useMemo, useEffect } from 'react';
 import Log from './History/Log';
 import Memory from './History/Memory';
 
-import HistoryContext from './context/HistoryContext';
+import HistoryContext from './HistoryContext';
 
-// context
-
-// 버튼 컴포넌트
 function HistoryMenu(props) {
   const { name, className } = props;
   const { setHistory, historyName, setHistoryName } =
     useContext(HistoryContext);
-  // 컨텐츠 이름 바뀌면, 실제 컨텐츠를 바꿈
   useEffect(() => {
     if (historyName === 'log') {
       setHistory(<Log />);
@@ -23,12 +19,10 @@ function HistoryMenu(props) {
   return (
     <button
       type='button'
-      className={`button_menu ${className}`}
+      className={`history__menu-${className}`}
       onClick={(e) => {
-        const buttonName = e.currentTarget.className.split(` `)[1];
-        // (버튼 이름 = 컨텐츠 이름)일 경우, 이미 컨텐츠 노출중이므로 실행 X
+        const buttonName = e.currentTarget.className.split(`-`)[-1];
         if (buttonName !== historyName) {
-          // 컨텐츠 이름(String) 변경
           setHistoryName(buttonName);
         }
       }}
@@ -48,12 +42,12 @@ export default function History() {
 
   return (
     <HistoryContext.Provider value={historyValue}>
-      <div className='colunm right'>
-        <div className='head'>
+      <div className='history column'>
+        <div className='history__menu'>
           <HistoryMenu name='기록' className='log' />
           <HistoryMenu name='메모리' className='memory' />
         </div>
-        {history}
+        <div className='history__content'>{history}</div>
       </div>
     </HistoryContext.Provider>
   );

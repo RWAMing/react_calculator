@@ -5,5 +5,5 @@ import React, { useState, useEffect } from 'react';
 // Export
 export default function Nav() {
   // Return
-  return <nav />;
+  return <nav className='main__menu' />;
 }

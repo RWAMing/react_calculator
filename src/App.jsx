@@ -6,7 +6,7 @@ import Main from './component/Main';
 import Calculator from './component/Main/Calculator';
 import History from './component/History';
 
-import MainContext from './component/context/MainContext';
+import MainContext from './component/MainContext';
 
 export default function App() {
   const [main, setMain] = useState(<Calculator />);
@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <MainContext.Provider value={mainValue}>
-      <div className='App bg'>
+      <div className='App'>
         <Nav />
         <Main />
         <History />

@@ -4,5 +4,5 @@ import React, { useState, useEffect } from 'react';
 // Export
 export default function Log() {
   // Return
-  return <ul className='body log colunm' />;
+  return <ul className='history__content-log' />;
 }

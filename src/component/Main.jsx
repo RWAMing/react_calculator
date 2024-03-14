@@ -1,24 +1,24 @@
 import React, { useContext } from 'react';
 
-import MainContext from './context/MainContext';
+import MainContext from './MainContext';
 
 export default function Main() {
   const { main, mainName } = useContext(MainContext);
   return (
-    <div className='colunm main'>
+    <main className='colunm main'>
       <div className='head'>
         <button
           type='button'
-          className='button_menu button_nav'
+          className='main__menu-open'
           onClick={() => {
             // 클릭시 nav 오픈
           }}
         >
           &equiv;
         </button>
-        <h1 className='title'>{mainName}</h1>
+        <h1 className='main__menu-name'>{mainName}</h1>
       </div>
-      <main>{main}</main>
-    </div>
+      <div className='main__content'>{main}</div>
+    </main>
   );
 }
