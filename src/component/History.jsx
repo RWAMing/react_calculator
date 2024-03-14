@@ -5,10 +5,11 @@ import Memory from './History/Memory';
 
 import HistoryContext from './HistoryContext';
 
-function HistoryMenu(props) {
+function HistoryNavUI(props) {
   const { name, className } = props;
   const { setHistory, historyName, setHistoryName } =
     useContext(HistoryContext);
+
   useEffect(() => {
     if (historyName === 'log') {
       setHistory(<Log />);
@@ -16,6 +17,7 @@ function HistoryMenu(props) {
       setHistory(<Memory />);
     }
   }, [historyName]);
+
   return (
     <button
       type='button'
@@ -35,6 +37,7 @@ function HistoryMenu(props) {
 export default function History() {
   const [history, setHistory] = useState(<Log />);
   const [historyName, setHistoryName] = useState('log');
+
   const historyValue = useMemo(
     () => ({ setHistory, historyName, setHistoryName }),
     [],
@@ -42,12 +45,14 @@ export default function History() {
 
   return (
     <HistoryContext.Provider value={historyValue}>
-      <div className='history column'>
-        <div className='history__menu'>
-          <HistoryMenu name='기록' className='log' />
-          <HistoryMenu name='메모리' className='memory' />
-        </div>
-        <div className='history__content'>{history}</div>
+      <div className='history'>
+        <header className='history__header'>
+          <nav className='history__nav'>
+            <HistoryNavUI name='기록' className='log' />
+            <HistoryNavUI name='메모리' className='memory' />
+          </nav>
+          <div className='history__content'>{history}</div>
+        </header>
       </div>
     </HistoryContext.Provider>
   );
