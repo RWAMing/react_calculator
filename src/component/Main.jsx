@@ -1,18 +1,11 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 
-// Component
-import Calculator from './Main/Calculator';
+import MainContext from './context/MainContext';
 
-// Export
 export default function Main() {
-  // State
-  const [leftBody, setLeftBody] = useState(<Calculator />);
-  const [titleName, setTitleName] = useState('표준');
-
-  // Return
+  const { main, mainName } = useContext(MainContext);
   return (
-    <div className='colunm left'>
+    <div className='colunm main'>
       <div className='head'>
         <button
           type='button'
@@ -23,9 +16,9 @@ export default function Main() {
         >
           &equiv;
         </button>
-        <h1 className='title'>{titleName}</h1>
+        <h1 className='title'>{mainName}</h1>
       </div>
-      {leftBody}
+      <main>{main}</main>
     </div>
   );
 }
