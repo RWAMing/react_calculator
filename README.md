@@ -9,6 +9,10 @@ It is an App for me to study JS, React.
 
 ### 2024.03.13.Wed
 
+#### #16 Arrange code about Main component
+
+> in progress...
+
 #### #15 Arrange code about History component
 
 Used with React hooks(state, effect, context, memo),
