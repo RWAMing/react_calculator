@@ -13,6 +13,15 @@ It is an App for me to study JS, React.
 
 > in progress...
 
+#### #18 media instaad of JS
+
+> in progress...
+
+#### #23 Rename all classes
+
+Above this, especially in CSS, it should be first to install SASS to use file of SCSS.
+I'd like to use both SCSS and Emotion if it is better.
+
 #### #15 Arrange code about History component
 
 Used with React hooks(state, effect, context, memo),
