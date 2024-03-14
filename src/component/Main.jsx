@@ -1,24 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useState, useMemo } from 'react';
 
-import MainContext from './context/MainContext';
+import Calculator from './Main/Calculator';
+
+import MainContext from './MainContext';
 
 export default function Main() {
-  const { main, mainName } = useContext(MainContext);
+  const [main, setMain] = useState(<Calculator />);
+  const [mainName, setMainName] = useState('표준');
+  const mainValue = useMemo(
+    () => ({ main, setMain, mainName, setMainName }),
+    [],
+  );
   return (
-    <div className='colunm main'>
-      <div className='head'>
-        <button
-          type='button'
-          className='button_menu button_nav'
-          onClick={() => {
-            // 클릭시 nav 오픈
-          }}
-        >
-          &equiv;
-        </button>
-        <h1 className='title'>{mainName}</h1>
-      </div>
-      <main>{main}</main>
-    </div>
+    <MainContext.Provider value={mainValue}>
+      <main className='main'>
+        <header className='main__header'>
+          <nav className='main__nav' />
+          <button
+            type='button'
+            className='main__nav-open'
+            onClick={() => {
+              // 클릭시 nav 오픈
+            }}
+          >
+            &equiv;
+          </button>
+          <h1 className='main__name'>{mainName}</h1>
+        </header>
+        <div className='main__content'>{main}</div>
+      </main>
+    </MainContext.Provider>
   );
 }

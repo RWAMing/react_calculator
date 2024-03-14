@@ -1,52 +1,56 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 
-// Component
-import CalButtonBox from './CalButtonBox';
+import CalculatorBtn from './CalculatorBtn';
 
-// Function
-import makeObjState from '../makeObjState';
-import fontVwHalfVh from '../../responsive/fontVwHalfVh';
+import CalculatorContext from './CalculatorContext';
 
-/**
- * 계산기 컴포넌트
- */
 export default function Calculator() {
-  // State
-  const calWay = makeObjState();
-  const calPrev = makeObjState();
-  const calNum = makeObjState('0');
-  const calNew = makeObjState('first');
+  const [prevInput, setPrevInput] = useState();
+  const [newInput, setNewInput] = useState('0');
+  const [way, setWay] = useState();
+  const [lastState, setLastState] = useState('first');
 
-  // Effect
-  useEffect(() => {
-    // .cal_num 요소 font-size 반응형
-    const props = {
-      target: document.querySelector('.cal_num'),
-      ref: document.querySelector('.left'),
-      refSize: 700,
-      vwh: 9,
-    };
-    window.addEventListener('load', (e) => fontVwHalfVh(e, props));
-    window.addEventListener('resize', (e) => fontVwHalfVh(e, props));
+  const calculatorValue = useMemo(
+    () => ({
+      prevInput,
+      setPrevInput,
+      newInput,
+      setNewInput,
+      way,
+      setWay,
+      lastState,
+      setLastState,
+    }),
+    [],
+  );
 
-    return () => {
-      window.removeEventListener('load', (e) => fontVwHalfVh(e, props));
-      window.removeEventListener('resize', (e) => fontVwHalfVh(e, props));
-    };
-  }, []);
-
-  // Return
-  const states = { calWay, calNum, calPrev, calNew };
   return (
-    <div className='body calculator colunm'>
-      <div className='cal_output colunm'>
-        <p className='cal_way'>{calWay.state}</p>
-        <p className='cal_num'>{calNum.state}</p>
+    <CalculatorContext.Provider value={calculatorValue}>
+      <div className='main__calculator colunm'>
+        <div className='main__calculator-output colunm'>
+          <p className='main__calculator-way'>{way}</p>
+          <p className='main__calculator-input'>{newInput}</p>
+        </div>
+        <CalculatorBtn />
       </div>
-      <CalButtonBox states={states} />
-    </div>
+    </CalculatorContext.Provider>
   );
 }
+
+// Effect
+// useEffect(() => {
+//   // .cal_num 요소 font-size 반응형
+//   const props = {
+//     target: document.querySelector('.cal_num'),
+//     ref: document.querySelector('.left'),
+//     refSize: 700,
+//     vwh: 9,
+//   };
+//   window.addEventListener('load', (e) => fontVwHalfVh(e, props));
+//   window.addEventListener('resize', (e) => fontVwHalfVh(e, props));
+
+//   return () => {
+//     window.removeEventListener('load', (e) => fontVwHalfVh(e, props));
+//     window.removeEventListener('resize', (e) => fontVwHalfVh(e, props));
+//   };
+// }, []);
