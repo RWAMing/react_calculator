@@ -8,7 +8,6 @@ import History from './component/History';
 
 import MainContext from './component/context/MainContext';
 
-// Export
 export default function App() {
   const [main, setMain] = useState(<Calculator />);
   const [mainName, setMainName] = useState('표준');
