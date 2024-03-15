@@ -5,9 +5,9 @@
 import React, { useState, useEffect } from 'react';
 
 // function
-import checkSafe from './checkSafe';
+import commonCheckSafe from './checkSafe';
 import logging from './logging';
-import err from './err';
+import CommonError from './err';
 
 /**
  * 계산 및 safeInteger체크 후, 계산기에 띄우는 함수
@@ -16,7 +16,7 @@ import err from './err';
  * @prop {String} value +, -, ×, ÷, = ...
  * @prop {*} sideClass 추가 클래스명
  */
-export default function btnPercent(button, props) {
+export default function btnRoot(button, props) {
   // Props
   const { value, sideClass, states } = props;
   const { calWay, calNum, calPrev, calNew } = states;
@@ -72,7 +72,7 @@ export default function btnPercent(button, props) {
     }
 
     // safe 확인
-    if (checkSafe(outputTry)) {
+    if (commonCheckSafe(outputTry)) {
       // 로그에 저장
       logging(prev, symbol, num, output);
       // 계산기에 결과값 띄우기
@@ -84,7 +84,7 @@ export default function btnPercent(button, props) {
         calWay.set(`${output} ${value}`); // ex) 'output ÷'
       }
     } else {
-      err(props.states); // 문제시 에러띄우고, 모든 값 지움
+      CommonError(props.states); // 문제시 에러띄우고, 모든 값 지움
     }
   }
   calNew.set(value); // 다음 계산시, 직전에 누른 버튼 참고

@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-import checkSafe from './checkSafe';
+import commonCheckSafe from './checkSafe';
 
 /**
  * 숫자(0~9), 소수점(.) 버튼을 눌렀을 때, 값을 입력하는 함수
@@ -20,7 +20,7 @@ export default function btnNum(props) {
   const strOutput = `${calNum.state}${value}`;
 
   // 숫자크기 괜찮으면 실행
-  if (checkSafe(strOutput)) {
+  if (commonCheckSafe(strOutput)) {
     // 새번호 대기거나, 직전 =였거나, 숫자를 누름
     if (value !== '.' && (calNew.state !== false || calNew.state === '=')) {
       console.log('새번호 대기거나, 직전 =였거나, 숫자를 누름');

@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
  * 출력하기 전, 숫자가 safe_integer인지 확인하는 함수
  * @param {String} numberExpected 예상되는 숫자 String형
  */
-export default function checkSafe(numberExpected) {
+export default function commonCheckSafe(numberExpected) {
   // 자릿수 파악용 : String으로 변경후 -랑 . 삭제
   const strExpected = String(numberExpected);
   const strNum = strExpected.replace(/-/g, '');
